@@ -1,4 +1,4 @@
-const LFparser = require('./lostfilm.parser.js');
+const LFparser = require('./lostfilm.serial.parser.js');
 const serialDBManager = require('./../serial/serial.db.manager.js');
 
 exports.checkForNewSerials = function () {

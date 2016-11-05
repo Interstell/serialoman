@@ -1,0 +1,602 @@
+[
+    {
+        "lostfilm": true,
+        "serial_name": "Американская история ужасов",
+        "episode_name": "Глава 8 (Chapter 8)",
+        "season": 6,
+        "episode_number": 8,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_american_horror_story.jpeg",
+        "release_date": "05.11.2016 22:29",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20113"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Черный список",
+        "episode_name": "Доктор Эдриан Шо (Dr. Adrian Shaw)",
+        "season": 4,
+        "episode_number": 7,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_blacklist.jpeg",
+        "release_date": "05.11.2016 21:57",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20110"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Легенды завтрашнего дня",
+        "episode_name": "Чудовища (Abominations)",
+        "season": 2,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_dc__s_legends_of_tomorrow.jpeg",
+        "release_date": "05.11.2016 19:33",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20107"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Сверхъестественное",
+        "episode_name": "Детский крик (The Foundry)",
+        "season": 12,
+        "episode_number": 3,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_supernatural.jpg",
+        "release_date": "04.11.2016 23:35",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20104"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Салем",
+        "episode_name": "После падения (After the Fall)",
+        "season": 3,
+        "episode_number": 1,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_salem.jpeg",
+        "release_date": "04.11.2016 22:37",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20101"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "От заката до рассвета",
+        "episode_name": "Тёмная сторона солнца (Dark Side of the Sun)",
+        "season": 3,
+        "episode_number": 10,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_from_dusk_till_dawn.jpeg",
+        "release_date": "04.11.2016 21:31",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20098"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Стрела",
+        "episode_name": "Живая Цель (Human Target)",
+        "season": 5,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_arrow.jpeg",
+        "release_date": "04.11.2016 21:14",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20095"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Радиоволна",
+        "episode_name": "Семь Три (Seven Three)",
+        "season": 1,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_frequency.jpeg",
+        "release_date": "04.11.2016 19:41",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20092"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Люк Кейдж",
+        "episode_name": "На свой счёт (Take It Personal)",
+        "season": 1,
+        "episode_number": 10,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_luke_cage.jpeg",
+        "release_date": "04.11.2016 15:35",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20089"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Люцифер",
+        "episode_name": "Монстр (Monster)",
+        "season": 2,
+        "episode_number": 6,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_lucifer.jpeg",
+        "release_date": "03.11.2016 23:27",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20086"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Агенты Щ.И.Т.",
+        "episode_name": "Добрый самаритянин (The Good Samaritan)",
+        "season": 4,
+        "episode_number": 6,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_marvel__s_agents_of_s_h_i_e_l_d.jpeg",
+        "release_date": "03.11.2016 23:12",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20083"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Холистическое детективное агентство Дирка Джентли",
+        "episode_name": "Горизонты (Horizons)",
+        "season": 1,
+        "episode_number": 1,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_dirk_gently__s_holistic_detective_agency.jpeg",
+        "release_date": "03.11.2016 23:16",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20080"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Флэш",
+        "episode_name": "Монстр (Monster)",
+        "season": 3,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_flash.jpeg",
+        "release_date": "03.11.2016 23:32",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20077"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Вне времени",
+        "episode_name": "Аламо (The Alamo)",
+        "season": 1,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_timeless.jpeg",
+        "release_date": "03.11.2016 21:01",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20074"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Готэм",
+        "episode_name": "Червонная королева (Red Queen)",
+        "season": 3,
+        "episode_number": 7,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_gotham.jpeg",
+        "release_date": "02.11.2016 23:44",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20071"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Люди",
+        "episode_name": "Эпизод 1",
+        "season": 2,
+        "episode_number": 1,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_humans.jpeg",
+        "release_date": "02.11.2016 23:16",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20068"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Супергёрл",
+        "episode_name": "Выжившие (Survivors)",
+        "season": 2,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_supergirl.jpeg",
+        "release_date": "02.11.2016 23:16",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20065"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Элементарно",
+        "episode_name": "Конец света или когда упадут небеса (Henny Penny the Sky Is Falling)",
+        "season": 5,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_elementary.jpeg",
+        "release_date": "02.11.2016 20:24",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20062"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Штамм",
+        "episode_name": "Падение (The Fall)",
+        "season": 3,
+        "episode_number": 10,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_strain.jpeg",
+        "release_date": "01.11.2016 23:59",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20059"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Ходячие мертвецы",
+        "episode_name": "Колодец (The Well)",
+        "season": 7,
+        "episode_number": 2,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_walking_dead.jpeg",
+        "release_date": "01.11.2016 23:42",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20056"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Падение",
+        "episode_name": "Раненья смертельной вражды (Wounds of Deadly Hate)",
+        "season": 3,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_fall.jpeg",
+        "release_date": "01.11.2016 21:42",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20053"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Радиоволна",
+        "episode_name": "Трансформация (Bleed Over)",
+        "season": 1,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_frequency.jpeg",
+        "release_date": "31.10.2016 23:36",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20050"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Люк Кейдж",
+        "episode_name": "Крутись как можешь, парень (DWYCK)",
+        "season": 1,
+        "episode_number": 9,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_luke_cage.jpeg",
+        "release_date": "31.10.2016 23:08",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20047"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Дневники вампира",
+        "episode_name": "Сегодня будет другим (Today Will Be Different)",
+        "season": 8,
+        "episode_number": 2,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_vampire_diaries.jpeg",
+        "release_date": "30.10.2016 23:49",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20044"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Ван Хельсинг",
+        "episode_name": "Ради меня (For Me)",
+        "season": 1,
+        "episode_number": 7,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_van_helsing.jpeg",
+        "release_date": "30.10.2016 23:34",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20041"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Нация Z",
+        "episode_name": "Добро пожаловать в Мёрфиград (Welcome to Murphytown)",
+        "season": 3,
+        "episode_number": 7,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_z_nation.jpeg",
+        "release_date": "30.10.2016 23:48",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20038"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Черный список",
+        "episode_name": "Дрозды (The Thrushes)",
+        "season": 4,
+        "episode_number": 6,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_blacklist.jpeg",
+        "release_date": "29.10.2016 23:04",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20032"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Американская история ужасов",
+        "episode_name": "Глава 7 (Chapter 7)",
+        "season": 6,
+        "episode_number": 7,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_american_horror_story.jpeg",
+        "release_date": "29.10.2016 22:18",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20029"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Легенды завтрашнего дня",
+        "episode_name": "Сёгун (Shogun)",
+        "season": 2,
+        "episode_number": 3,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_dc__s_legends_of_tomorrow.jpeg",
+        "release_date": "29.10.2016 21:42",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20026"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "От заката до рассвета",
+        "episode_name": "Матансас (Matanzas)",
+        "season": 3,
+        "episode_number": 9,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_from_dusk_till_dawn.jpeg",
+        "release_date": "29.10.2016 14:46",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20023"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Люцифер",
+        "episode_name": "Оружейник (Weaponizer)",
+        "season": 2,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_lucifer.jpeg",
+        "release_date": "28.10.2016 23:45",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20020"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Люк Кейдж",
+        "episode_name": "Сдан с потрохами (Blowin' Up the Spot)",
+        "season": 1,
+        "episode_number": 8,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_luke_cage.jpeg",
+        "release_date": "28.10.2016 23:22",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20017"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Слепое пятно",
+        "episode_name": "Служат только себе (Resolve Eleven Myths (Only serve themselves)",
+        "season": 2,
+        "episode_number": 7,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_blindspot.jpeg",
+        "release_date": "28.10.2016 23:04",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20014"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Радиоволна",
+        "episode_name": "Далекая, но близкая проблема (The Near Far Problem)",
+        "season": 1,
+        "episode_number": 3,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_frequency.jpeg",
+        "release_date": "28.10.2016 21:36",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20011"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Стрела",
+        "episode_name": "Искупление (Penance)",
+        "season": 5,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_arrow.jpeg",
+        "release_date": "28.10.2016 19:31",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20008"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Вне времени",
+        "episode_name": "Приём в замке Варлар (Party at Castle Varlar)",
+        "season": 1,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_timeless.jpeg",
+        "release_date": "27.10.2016 23:05",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20005"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Агенты Щ.И.Т.",
+        "episode_name": "Тюрьма (Lockup)",
+        "season": 4,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_marvel__s_agents_of_s_h_i_e_l_d.jpeg",
+        "release_date": "27.10.2016 23:37",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=20002"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Флэш",
+        "episode_name": "Новые злодеи (The New Rogues)",
+        "season": 3,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_flash.jpeg",
+        "release_date": "27.10.2016 20:27",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19999"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Радиоволна",
+        "episode_name": "Сигнал и шум (Signal and Noise)",
+        "season": 1,
+        "episode_number": 2,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_frequency.jpeg",
+        "release_date": "26.10.2016 23:08",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19996"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Готэм",
+        "episode_name": "Следуй за белым кроликом (Follow the White Rabbit)",
+        "season": 3,
+        "episode_number": 6,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_gotham.jpeg",
+        "release_date": "26.10.2016 23:47",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19993"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Супергёрл",
+        "episode_name": "Добро пожаловать на Землю (Welcome to Earth)",
+        "season": 2,
+        "episode_number": 3,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_supergirl.jpeg",
+        "release_date": "26.10.2016 22:09",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19990"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Элементарно",
+        "episode_name": "Помоги и поймай ее (Render, and then Seize Her)",
+        "season": 5,
+        "episode_number": 3,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_elementary.jpeg",
+        "release_date": "26.10.2016 16:39",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19987"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Звёздные войны: Повстанцы",
+        "episode_name": "Последняя битва (The Last Battle)",
+        "season": 3,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_star_wars_rebels.jpeg",
+        "release_date": "25.10.2016 23:03",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19984"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Падение",
+        "episode_name": "Ад внутри него (The Hell Within Him)",
+        "season": 3,
+        "episode_number": 4,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_fall.jpeg",
+        "release_date": "25.10.2016 23:55",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19981"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Штамм",
+        "episode_name": "Борись или умри (Do or Die)",
+        "season": 3,
+        "episode_number": 9,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_strain.jpeg",
+        "release_date": "25.10.2016 23:10",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19978"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Ходячие мертвецы",
+        "episode_name": "Настанет день, когда не будет тебя (The Day Will Come When You Won't Be)",
+        "season": 7,
+        "episode_number": 1,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_walking_dead.jpeg",
+        "release_date": "25.10.2016 22:21",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19975"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Полиция Гавайев",
+        "episode_name": "Противостояние (Ke Ku 'Ana)",
+        "season": 7,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_hawaii_five_.jpeg",
+        "release_date": "25.10.2016 20:32",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19972"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Ван Хельсинг",
+        "episode_name": "Ничто не важно (Nothing Matters)",
+        "season": 1,
+        "episode_number": 6,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_van_helsing.jpeg",
+        "release_date": "24.10.2016 23:38",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19969"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Радиоволна",
+        "episode_name": "Пилот (Pilot)",
+        "season": 1,
+        "episode_number": 1,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_frequency.jpeg",
+        "release_date": "24.10.2016 23:17",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19966"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Люк Кейдж",
+        "episode_name": "Манифест (Manifest)",
+        "season": 1,
+        "episode_number": 7,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_luke_cage.jpeg",
+        "release_date": "24.10.2016 23:17",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19963"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Нация Z",
+        "episode_name": "Полет Дока над гнездом кукушки (Doc Flew Over the Cuckoo's Nest)",
+        "season": 3,
+        "episode_number": 6,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_z_nation.jpeg",
+        "release_date": "24.10.2016 23:05",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19960"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Крик",
+        "episode_name": "Хэллоуин (Halloween)",
+        "season": 2,
+        "episode_number": 13,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_scream.jpeg",
+        "release_date": "24.10.2016 16:58",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19957"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Сверхъестественное",
+        "episode_name": "Мамма миа (Mamma Mia)",
+        "season": 12,
+        "episode_number": 2,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_supernatural.jpg",
+        "release_date": "23.10.2016 22:17",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19954"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Дневники вампира",
+        "episode_name": "Здравствуй, братец! (Hello Brother)",
+        "season": 8,
+        "episode_number": 1,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_vampire_diaries.jpeg",
+        "release_date": "23.10.2016 22:08",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19951"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Рождение мафии",
+        "episode_name": "Второй сезон полностью (The Complete Second Season)",
+        "season": 2,
+        "full_season": true,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_making_of_the_mob.jpeg",
+        "release_date": "23.10.2016 11:58",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19948"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Черный список",
+        "episode_name": "Концерн Линдквист (The Lindquist Concern)",
+        "season": 4,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_the_blacklist.jpeg",
+        "release_date": "22.10.2016 23:13",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19945"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Американская история ужасов",
+        "episode_name": "Глава 6 (Chapter 6)",
+        "season": 6,
+        "episode_number": 6,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_american_horror_story.jpeg",
+        "release_date": "22.10.2016 23:28",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19942"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Легенды завтрашнего дня",
+        "episode_name": "Общество справедливости Америки (The Justice Society of America)",
+        "season": 2,
+        "episode_number": 2,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_dc__s_legends_of_tomorrow.jpeg",
+        "release_date": "22.10.2016 20:21",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19939"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "От заката до рассвета",
+        "episode_name": "Рио Сангре (Rio Sangre)",
+        "season": 3,
+        "episode_number": 8,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_from_dusk_till_dawn.jpeg",
+        "release_date": "22.10.2016 19:01",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19936"
+    },
+    {
+        "lostfilm": true,
+        "serial_name": "Смертельное оружие",
+        "episode_name": "Пролитое молоко (Spilt Milk)",
+        "season": 1,
+        "episode_number": 5,
+        "icon": "http://www.lostfilm.tv/Static/icons/cat_lethal_weapon.jpeg",
+        "release_date": "22.10.2016 18:44",
+        "episode_url": "http://www.lostfilm.tv/details.php?id=19933"
+    }
+]
