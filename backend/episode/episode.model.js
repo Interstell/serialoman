@@ -9,10 +9,12 @@ var episodeSchema = new Schema({
         required: true
     },
     serial_rus_name:{
-        type:String
+        type:String,
+        required:true
     },
     serial_orig_name:{
-        type:String
+        type:String,
+        required:true
     },
     episode_name:{
         type:String,
@@ -38,12 +40,27 @@ var episodeSchema = new Schema({
         type:String,
         required:true
     },
-    lostfilm:{
-        type:Boolean
+    source:{
+        type:String,
+        required:true
     },
     full_season:{
         type: Boolean,
         default:false
+    },
+    download_page_url:{
+        type:String,
+        required:true
+    },
+    download_urls:{
+        type: [
+            {
+                quality: String,
+                link:String,
+                size: String
+            }
+        ],
+        required:true
     }
 });
 
