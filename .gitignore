@@ -38,3 +38,6 @@ jspm_packages
 
 # Env variables
 env_variables.*
+
+# Example files
+*_example.json
