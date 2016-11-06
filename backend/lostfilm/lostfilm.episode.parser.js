@@ -151,6 +151,6 @@ exports.getAllEpisodes = function(start, finish){
 /*exports.addDownloadLinksToEpisode({download_page_url: 'http://www.lostfilm.tv/nrdr2.php?c=224&s=3.00&e=06'})
     .then (episode => console.log(episode));*/
 
-exports.getAllEpisodes(0, 10*15)
-    .then(arr => fs.writeFile('../episode/episodes_example.json',JSON.stringify(arr, null, 4))) ;
+exports.getAllEpisodes(0, 15)
+    .then(arr => fs.writeFile('../data_samples/episodes_example.json',JSON.stringify(arr, null, 4))) ;
     //.then(arr => console.log(arr));
