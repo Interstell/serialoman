@@ -5,6 +5,7 @@ const request = require('request'),
     ENV_VARIABLES = require('../env_variables.js');
 
 exports.getAllEpisodesOnPage = function (episodes, offset) {
+    console.log(`${offset} episodes already parsed.`);
     return new Promise((resolve, reject) => {
         let startIndex = episodes.length;
         request({uri:'http://www.lostfilm.tv/browse.php?o='+offset,
@@ -18,14 +19,16 @@ exports.getAllEpisodesOnPage = function (episodes, offset) {
                     let spans = $('.content_body span');
                     for (let k = 0; k < (spans.length-1)/2; k++)
                         episodes.push({source: 'lostfilm'});
-                    spans.each((i, elem) =>{
-                       if (i == spans.length -1)
+                    spans.each((i, elem, arr) =>{
+                       if (i >= 30){
                            return;
+                       }
                        else if (i % 2 == 0){
                            episodes[startIndex + i/2].serial_rus_name = $(elem).text().trim();
                        }
                        else episodes[startIndex + (i-1)/2].episode_name = $(elem).text().trim();
                     });
+
                     let episode_divs = $('.content_body div');
                     episode_divs.each((i, elem) => {
                        if (i % 2 == 0 && i != episode_divs.length - 1){
@@ -59,19 +62,25 @@ exports.getAllEpisodesOnPage = function (episodes, offset) {
                     download_links.each((i, elem) => {
                         if (i % 2 == 0){
                             if (episodes[startIndex+ i/2].full_season){
-                                episodes[startIndex + i/2].serial_name = $(elem).attr('href').match(/id=[\d]+&([^\d]+)/)[1].trim();
+                                episodes[startIndex + i/2].serial_name = $(elem).attr('href').match(/id=[\d]+&([\w-. ]+)(?=[\d])/)[1].trim();
                                 episodes[startIndex + i/2].serial_orig_name = episodes[startIndex + i/2].serial_name;
                                 //todo check for real name for full_season_episodes
                             }
                             else {
-                                episodes[startIndex + i/2].serial_name = $(elem).attr('href')
-                                    .match(/id=[\d]+&([\S]+).S[\d]+E[\d]+/)[1]
-                                    .replace(/\./g,' ');
+                                let link_match = $(elem).attr('href').replace(/ /g,'')
+                                    .match(/id=[\d]+&([\S]+).S[\d]+/);
+                                if (!link_match) {
+                                    link_match = $(elem).attr('href').match(/id=[\d]+&([^-]+)(?= [\d])/);
+                                    episodes[startIndex + i/2].serial_name = link_match[1].trim();
+                                }
+                                else{
+                                    episodes[startIndex + i/2].serial_name = link_match[1].replace(/\./g,' ');
+                                }
                                 episodes[startIndex + i/2].serial_orig_name = episodes[startIndex + i/2].serial_name;
                             }
                         }
                         else { //getting download page link
-                            let link_params = $(elem).attr('onclick').match(/ShowAllReleases\('([\d_]+)','([\d.]+)','([\d]+)'\)/);
+                            let link_params = $(elem).attr('onclick').match(/ShowAllReleases\('([\d_]+)','([\d.]+)','([\d-]+)'\)/);
                             episodes[startIndex + (i-1)/2].download_page_url = 'http://www.lostfilm.tv/nrdr2.php?c='+link_params[1]+'&s='+link_params[2]+'&e='+link_params[3];
                         }
                     });
@@ -151,6 +160,6 @@ exports.getAllEpisodes = function(start, finish){
 /*exports.addDownloadLinksToEpisode({download_page_url: 'http://www.lostfilm.tv/nrdr2.php?c=224&s=3.00&e=06'})
     .then (episode => console.log(episode));*/
 
-exports.getAllEpisodes(0, 15)
-    .then(arr => fs.writeFile('../data_samples/episodes_example.json',JSON.stringify(arr, null, 4))) ;
+/*exports.getAllEpisodes(0, 15)
+    .then(arr => fs.writeFile('../data_samples/episodes_example.json',JSON.stringify(arr, null, 4))) ;*/
     //.then(arr => console.log(arr));

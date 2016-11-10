@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/cw-serialoman');
+if (!mongoose.connection.readyState){
+    mongoose.connect('mongodb://localhost:27017/cw-serialoman');
+}
 var Schema = mongoose.Schema;
 mongoose.Promise = Promise;
 

@@ -1,8 +1,8 @@
-const LFparser = require('./lostfilm.serial.parser.js');
+const LFSerialParser = require('./lostfilm.serial.parser.js');
 const serialDBManager = require('./../serial/serial.db.manager.js');
 
 exports.checkForNewSerials = function () {
-    LFparser
+    LFSerialParser
         .getPopularSerialsList()
         .then(arr => {
             return new Promise((resolve, reject)=>{
@@ -24,7 +24,7 @@ exports.checkForNewSerials = function () {
                     .catch(err => console.log(err.message));
             });
         })
-        .then(serials => serials.map(val => LFparser.getSerialDetailedInfo(val)))
+        .then(serials => serials.map(val => LFSerialParser.getSerialDetailedInfo(val)))
         .then(serials => Promise.all(serials))
         .then(serials => serials.map(val => serialDBManager.addNewSerialToDB(val)))
         .then(serials => Promise.all(serials))
