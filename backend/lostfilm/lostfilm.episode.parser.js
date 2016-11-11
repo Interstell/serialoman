@@ -5,7 +5,6 @@ const request = require('request'),
     ENV_VARIABLES = require('../env_variables.js');
 
 exports.getAllEpisodesOnPage = function (episodes, offset) {
-    console.log(`${offset} episodes already parsed.`);
     return new Promise((resolve, reject) => {
         let startIndex = episodes.length;
         request({uri:'http://www.lostfilm.tv/browse.php?o='+offset,

@@ -9,7 +9,7 @@ exports.checkForNewSerials = function () {
                 Promise.resolve(arr.map((serial)=>{
                     return serialDBManager.checkForSerialExistanceInDB(serial);
                 }))
-                    .then(serials_bool => Promise.all(serials_bool))
+                    .then(serials => Promise.all(serials))
                     .then(serials_bool => serials_bool.map((val, index) => {
                         return {
                             exists: val,
@@ -32,4 +32,4 @@ exports.checkForNewSerials = function () {
         .catch(err => console.log(err.message));
 };
 
-exports.checkForNewSerials();
+//exports.checkForNewSerials();
