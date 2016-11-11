@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Episode = require('./episode.model');
+const Episode = require('./../../models/episode.model.js');
 const serialDBManager = require('../serial/serial.db.manager');
 
 exports.fillBaseFromJSON = function(){

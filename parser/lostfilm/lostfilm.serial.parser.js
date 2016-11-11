@@ -38,7 +38,7 @@ exports.getSerialDetailedInfo = function(serial){
                     var main_info = windows1251.decode($(".mid > div").text());
                     serial.prod_country = main_info.match(/Страна: ([А-Яа-я, ]*)/)[1];
                     serial.start_year = parseInt(main_info.match(/Год выхода: ([0-9]*)/)[1]);
-                    serial.genre = main_info.match(/Жанр: ([А-Яа-я \/]*)/)[1];
+                    serial.genres = main_info.match(/Жанр: ([А-Яа-я \/]*)/)[1].split('/').map(genre => genre.trim().toLowerCase());
                     serial.seasons_num = parseInt(main_info.match(/Количество сезонов: ([0-9]*)/)[1]);
                     var onair = main_info.match(/Статус: ([а-я]*)/)[1];
                     serial.is_on_air = (onair === 'снимается');

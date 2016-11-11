@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Serial = require('./serial.model.js');
+const Serial = require('./../../models/serial.model.js');
 
 exports.fillBaseFromJSON = function(){
     fs.readFile('./serials_example.json', (err, buf)=>{

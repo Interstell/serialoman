@@ -37,8 +37,8 @@ var serialSchema = new Schema({
         type:Number,
         required:true
     },
-    genre:{
-        type:String,
+    genres:{
+        type:[String],
         required:true
     },
     seasons_num:{
@@ -50,9 +50,6 @@ var serialSchema = new Schema({
         required:true
     },
     own_site:{
-        type:String
-    },
-    text:{
         type:String
     },
     description:{

@@ -2,7 +2,8 @@ const request = require('request'),
     cheerio = require('cheerio'),
     windows1251 = require('windows-1251'),
     fs = require('fs'),
-    ENV_VARIABLES = require('../env_variables.js');
+    ENV_VARIABLES = require('../env_variables.js'),
+    moment = require('moment');
 
 exports.getAllEpisodesOnPage = function (episodes, offset) {
     return new Promise((resolve, reject) => {
@@ -50,7 +51,7 @@ exports.getAllEpisodesOnPage = function (episodes, offset) {
                     let release_dates = $('.content_body b');
                     release_dates.each((i, elem) => {
                        if (i % 3 == 1){
-                           episodes[startIndex + (i-1)/3].release_date = $(elem).text();
+                           episodes[startIndex + (i-1)/3].release_date = moment($(elem).text().trim(),'DD.MM.YYYY hh:mm').format();
                        }
                     });
                     let detailed_links = $('.content_body a.a_details');

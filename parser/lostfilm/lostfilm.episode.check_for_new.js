@@ -3,7 +3,7 @@ const episodeDBManager = require('../episode/episode.db.manager');
 
 exports.parseAllEpisodes = function(){ //dev function for initialize parsing
     let all_episodes;
-    LFEpisodeParser.getAllEpisodes(0, 0)
+    LFEpisodeParser.getAllEpisodes(0, 75)
         .then(episodes => all_episodes = episodes)
         .then(episodes => episodes.map(episode => episodeDBManager.checkForSerialExistanceInDBByEpisode(episode)))
         .then(episodes => Promise.all(episodes))
@@ -26,8 +26,8 @@ exports.parseAllEpisodes = function(){ //dev function for initialize parsing
         }))
         .then(episodes => episodes.filter(episode => !episode.exists)) //filter new episodes
         .then(episodes => episodes.map(episode => episode.episode))
-        /*.then(episodes => episodes.map(episode => episodeDBManager.addNewEpisodeToDB(episode)))
-        .then(episodes => Promise.all(episodes))*/
+        .then(episodes => episodes.map(episode => episodeDBManager.addNewEpisodeToDB(episode)))
+        .then(episodes => Promise.all(episodes))
         .then(episodes => console.log(`[LF Parser]: ${episodes.length} new episodes added`))
     ;
 };
@@ -58,7 +58,7 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
                     .then(episodes => episodes.map(episode => episodeDBManager.addNewEpisodeToDB(episode)))
                     .then(episodes => Promise.all(episodes))
                     .then(episodes => {
-                        if (episodes.length === 0){
+                        if (episodes.length === 0){ //no new episodes on page => no need to parse anymore
                             resolve(new_episodes);
                             return Promise.reject(new Error(''));
                         }
@@ -81,9 +81,9 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
 
 /*exports.checkForNewEpisodes()
     .then(episodes => {
-        console.log(`${episodes.length} new episodes parsed.`);
+        console.log(`[LF Parser]: ${episodes.length} new episodes parsed.`);
         episodes.forEach(episode => console.log(`\t${episode.serial_name} S${episode.season}E${episode.episode_number} (${episode.release_date})`));
     });*/
 
 
-//exports.parseAllEpisodes();
+exports.parseAllEpisodes();
