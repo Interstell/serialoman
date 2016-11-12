@@ -30,6 +30,10 @@ var serialSchema = new Schema({
         type:String,
         required:true
     },
+    poster_color:{
+        type:String,
+        required:true
+    },
     prod_country:{
         type:String
     },

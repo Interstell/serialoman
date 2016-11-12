@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Serial = require('./../../models/serial.model.js');
+const parser = require('../lostfilm/lostfilm.serial.parser');
 
 exports.fillBaseFromJSON = function(){
     fs.readFile('./serials_example.json', (err, buf)=>{
@@ -40,4 +41,19 @@ exports.addNewSerialToDB = function(new_serial){
           resolve(true);
       });
   });
+};
+
+exports.addColors = function(new_serial){
+    Serial
+        .find({})
+        .exec((err, serials) => {
+           Promise.resolve(serials)
+               .then(serials => serials.map(serial => parser.addColorToSerialByPoster(serial)))
+               .then(serials => Promise.all(serials))
+               .then(serials => serials.map(serial => {
+                   serial.save((err, data) => {
+                      console.log(data.poster_color);
+                   });
+               }))
+        });
 };

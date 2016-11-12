@@ -1,9 +1,11 @@
 const Serial = require ('../models/serial.model');
 
 exports.getSerials = function(req, res){
-    let size = (req.query.size)? parseInt(req.query.size): 15;
-    let offset = (req.query.offset)? parseInt(req.query.offset):0;
     let briefly = (req.query.briefly)?req.query.briefly:false;
+    let size = (req.query.size)? parseInt(req.query.size): 15;
+    if (!briefly && (!size || size <= 0))
+        size = 15;
+    let offset = (req.query.offset)? parseInt(req.query.offset):0;
     let briefSelectString = '';
     if (briefly){
         briefSelectString = 'name rus_name orig_name source genres is_on_air';

@@ -15,6 +15,7 @@
     "moment": "^2.16.0",
     "mongoose": "^4.6.7",
     "morgan": "~1.7.0",
+    "node-vibrant": "^2.1.2",
     "request": "^2.78.0",
     "serve-favicon": "~2.3.0",
     "windows-1251": "^1.0.0"

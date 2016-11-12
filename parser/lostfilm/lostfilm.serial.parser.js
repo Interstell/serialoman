@@ -1,7 +1,8 @@
 const request = require('request'),
     cheerio = require('cheerio'),
     windows1251 = require('windows-1251'),
-    fs = require('fs');
+    fs = require('fs'),
+    Vibrant = require('node-vibrant');
 
 exports.getPopularSerialsList = function(){
     return new Promise((resolve, reject) => {
@@ -58,5 +59,22 @@ exports.getSerialDetailedInfo = function(serial){
                 }
                 else reject(err);
             });
+    });
+};
+
+exports.addColorToSerialByPoster = function(serial){
+    let RGBToHex = function(r,g,b){
+        var bin = r << 16 | g << 8 | b;
+        return (function(h){
+            return new Array(7-h.length).join("0")+h
+        })(bin.toString(16).toUpperCase())
+    };
+    return new Promise((resolve, reject) => {
+        Vibrant.from(String(serial.poster)).getPalette((err, palette) => {
+            let color = palette.Vibrant || palette.LightVibrant || palette.DarkVibrant;
+            color.rgb = color.rgb.map(cl => Math.round(parseInt(cl)).toString());
+            serial.poster_color = RGBToHex(color.rgb[0],color.rgb[1],color.rgb[2]);
+            resolve(serial);
+        });
     });
 };

@@ -26,10 +26,12 @@ exports.checkForNewSerials = function () {
         })
         .then(serials => serials.map(val => LFSerialParser.getSerialDetailedInfo(val)))
         .then(serials => Promise.all(serials))
+        .then(serials => serials.map(val => LFSerialParser.addColorToSerialByPoster(val)))
+        .then(serials => Promise.all(serials))
         .then(serials => serials.map(val => serialDBManager.addNewSerialToDB(val)))
         .then(serials => Promise.all(serials))
         .then(serials => console.log(`[LF Parser]: ${serials.length} new serials added`))
         .catch(err => console.log(err.message));
 };
 
-exports.checkForNewSerials();
+//exports.checkForNewSerials();

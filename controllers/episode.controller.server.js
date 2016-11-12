@@ -1,9 +1,9 @@
 const Episode = require('../models/episode.model');
 
 exports.getEpisodes = function(req, res){
-    let size = (req.query.size)? parseInt(req.query.size): 15;
-    if (!size || size <= 0)
-        size = 15;
+    let size = (req.query.size)? parseInt(req.query.size): 30;
+    if (!size || size <= 0 || size > 30)
+        size = 30;
     let offset = (req.query.offset)? parseInt(req.query.offset):0;
     if (!offset || offset < 0)
         offset = 0;
@@ -25,8 +25,6 @@ exports.getEpisodes = function(req, res){
     if (req.query.before){
         query = query.lte(before);
     }
-    if (req.query.serial_name || req.query.season || req.query.episode)
-        query = query.limit(0);
     if (req.query.serial_name){
         query = query.find({serial_orig_name: new RegExp(serial_name,'i')});
     }
