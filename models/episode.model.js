@@ -39,7 +39,7 @@ var episodeSchema = new Schema({
         default: 0,
     },
     release_date:{
-        type:String,
+        type: Date,
         required:true
     },
     source:{

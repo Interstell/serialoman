@@ -51,7 +51,7 @@ exports.getAllEpisodesOnPage = function (episodes, offset) {
                     let release_dates = $('.content_body b');
                     release_dates.each((i, elem) => {
                        if (i % 3 == 1){
-                           episodes[startIndex + (i-1)/3].release_date = moment($(elem).text().trim(),'DD.MM.YYYY hh:mm').format();
+                           episodes[startIndex + (i-1)/3].release_date = moment($(elem).text().trim(),'DD.MM.YYYY hh:mm').format().replace(/\+[\d]+/,'+03');
                        }
                     });
                     let detailed_links = $('.content_body a.a_details');
