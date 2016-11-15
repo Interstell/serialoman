@@ -13,7 +13,6 @@ const ENV_VARIABLES = require('./env_variables.js');
 const User = require('./models/user.model');
 const userCtrl = require('./controllers/user.controller.server');
 
-const routes = require('./routes/index');
 const api = require('./routes/api');
 
 const app = express();
@@ -49,8 +48,11 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
 app.use('/api', api);
+
+app.all("/*", (req, res, next) => {
+    res.sendFile("index.html", { root: __dirname + "/public" });
+});
 
 passport.use(new LocalStrategy({
         usernameField:'email'

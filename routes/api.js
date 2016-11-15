@@ -17,6 +17,8 @@ router.get('/', function(req, res, next) {
     res.send('API description here.');
 });
 
+//#region User
+
 router.get('/user', authorizeRequest, (req, res) => {
     res.json(req.user);
 });
@@ -28,6 +30,8 @@ router.post('/user/register',(req, res) => {
 router.post('/users/login', passport.authenticate('local'), (req, res) => {
     res.send(req.user);
 });
+
+//#endregion
 
 //#region serials
 router.get('/serials', (req, res) => {
