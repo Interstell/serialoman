@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 if (!mongoose.connection.readyState){
     mongoose.connect('mongodb://localhost:27017/cw-serialoman');
 }
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 mongoose.Promise = Promise;
 
-var serialSchema = new Schema({
+let serialSchema = new Schema({
    name: {
        type: String,
        required: true
