@@ -47,6 +47,4 @@ data_samples
 .idea
 
 #Materialize Lib
-materialize.*
-materialize.css
-materialize.css.map
+materialize
