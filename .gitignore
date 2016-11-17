@@ -48,3 +48,5 @@ data_samples
 
 #Materialize Lib
 materialize.*
+materialize.css
+materialize.css.map
