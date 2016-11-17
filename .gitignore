@@ -45,3 +45,6 @@ data_samples
 
 # WebStorm
 .idea
+
+#Materialize Lib
+materialize.*
