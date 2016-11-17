@@ -14,7 +14,14 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
     }
     if (!offset || offset < 0)
         offset = 0;
-    Serial.find({})
+    let mongooseQuery = Serial.find({});
+    if (req.query.is_on_air){
+        if (req.query.is_on_air == 'true')
+            mongooseQuery = mongooseQuery.find({is_on_air: true});
+        else if (req.query.is_on_air == 'false')
+            mongooseQuery = mongooseQuery.find({is_on_air: false});
+    }
+    mongooseQuery
         .limit(size)
         .skip(offset)
         .select(briefSelectString)

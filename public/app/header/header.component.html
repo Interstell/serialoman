@@ -1,0 +1,37 @@
+<header>
+    <nav class="top-nav">
+        <div class="container">
+            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+                <i class="material-icons menu-button">menu</i>
+            </a>
+            <div class="nav-wrapper"><a class="page-title">{{pageTitle}}</a></div>
+        </div>
+    </nav>
+    <ul id="nav-mobile" class="side-nav fixed">
+        <li><div class="userView">
+            <div class="background">
+                <img src="http://materializecss.com/images/office.jpg">
+            </div>
+            <a href="#!user"><img class="circle" src="http://materializecss.com/images/yuna.jpg"></a>
+            <a href="#!name"><span class="white-text name">John Doe</span></a>
+            <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div></li>
+        <li class="bold"><a href="#!" class="waves-effect waves-teal">First Sidebar Link</a></li>
+        <li class="bold"><a href="#!" class="">Second Sidebar Link</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-teal"><i class="material-icons">arrow_drop_down</i>All Serials</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li *ngFor="let serial of briefSerials">
+                                <a href="#">{{serial.orig_name}}</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>

@@ -3,11 +3,13 @@
 
 <head lang="en">
     <title>Serialoman App</title>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="app/css/materialize.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="app/css/style.css" media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="app/app.component.css" rel="stylesheet" />
 
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -15,6 +17,7 @@
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
+
 
     <!-- Configure SystemJS -->
     <script src="systemjs.config.js"></script>
@@ -24,8 +27,23 @@
 </head>
 
 <body>
-    <sm-app>Loading app...</sm-app>
-    Starter files
+    <sm-app>
+        <div>
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </sm-app>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
 </body>
 
 </html>
