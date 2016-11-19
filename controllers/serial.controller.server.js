@@ -8,12 +8,13 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
     let offset = (req.query.offset)? parseInt(req.query.offset):0;
     let briefSelectString = '';
     if (briefly && briefly != 'false'){
-        briefSelectString = 'name rus_name orig_name source genres is_on_air';
+        briefSelectString = '_id serial_id name rus_name orig_name source genres is_on_air poster_color';
         if (!req.query.size)
             size = 0;
     }
     if (!offset || offset < 0)
         offset = 0;
+    let sort = (req.query.sort)?parseInt(req.query.sort): 1;
     let mongooseQuery = Serial.find({});
     if (req.query.is_on_air){
         if (req.query.is_on_air == 'true')
@@ -24,6 +25,7 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
     mongooseQuery
         .limit(size)
         .skip(offset)
+        .sort({rus_name: sort})
         .select(briefSelectString)
         .exec((err, data) => {
             if (err)
@@ -34,7 +36,17 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
 
 exports.getSerialById = function(req, res){
     Serial
-        .findOne({_id: req.params.serial_id})
+        .findOne({_id: req.params._id})
+        .exec((err, data) => {
+            if (err)
+                res.status(500).json(err);
+            res.json(data);
+        })
+};
+
+exports.getSerialBySerialId = function (req, res) {
+    Serial
+        .findOne({serial_id: req.params.serial_id})
         .exec((err, data) => {
             if (err)
                 res.status(500).json(err);

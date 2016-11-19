@@ -34,12 +34,18 @@ exports.checkForSerialExistanceInDB = function(serial){
 
 exports.addNewSerialToDB = function(new_serial){
   return new Promise((resolve, reject) => {
-      let serial = new Serial(new_serial);
-      serial.save((err)=>{
-         if (err)
-             reject(err);
-          resolve(true);
-      });
+      Serial
+          .count({})
+          .exec((err, value) => {
+              value++;
+              let serial = new Serial(new_serial);
+              serial.serial_id = value;
+              serial.save((err)=>{
+                  if (err)
+                      reject(err);
+                  resolve(true);
+              });
+          });
   });
 };
 

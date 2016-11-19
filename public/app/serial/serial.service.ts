@@ -8,16 +8,21 @@ import {ISerial} from "./serial";
 
 @Injectable()
 export class SerialService{
-    constructor(private $http: Http){}
+    constructor(private _http: Http){}
 
     getSerialsBriefly(): Observable<ISerial[]>{
-        return this.$http.get('/api/serials?briefly=true')
+        return this._http.get('/api/serials?briefly=true')
             .map((response: Response) => <ISerial[]>response.json())
             .catch(this.handleError);
     }
 
+    getSerialById(id: number): Observable<ISerial>{
+        return this._http.get('/api/serials/serial_id/'+id)
+            .map((response: Response) => <ISerial>response.json())
+            .catch(this.handleError);
+    }
+
     private handleError(error : Response){
-        console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }
 }

@@ -70,7 +70,12 @@ let serialSchema = new Schema({
     },
     plot:{
         type:String
+    },
+    serial_id:{
+       type: Number,
+        required: true
     }
 });
 
-module.exports = mongoose.model('Serial',serialSchema);
+let serialModel = mongoose.model('Serial',serialSchema);
+module.exports = serialModel;

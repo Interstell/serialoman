@@ -24,11 +24,19 @@
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
+    <style>
+        .preload{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 
 <body>
     <sm-app>
-        <div>
+        <div class="preload">
             <div class="preloader-wrapper big active">
                 <div class="spinner-layer spinner-blue-only">
                     <div class="circle-clipper left">

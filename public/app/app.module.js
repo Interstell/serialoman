@@ -15,6 +15,12 @@ var header_component_1 = require("./header/header.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var serial_service_1 = require("./serial/serial.service");
+var main_component_1 = require("./main/main.component");
+var router_1 = require("@angular/router");
+var serial_component_1 = require("./serial/serial.component");
+var shared_service_1 = require("./shared/shared.service");
+var user_service_1 = require("./user/user.service");
+var register_component_1 = require("./register/register.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,14 +31,25 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            http_1.HttpModule
+            http_1.HttpModule,
+            router_1.RouterModule.forRoot([
+                { path: 'register', component: register_component_1.RegisterComponent },
+                { path: 'serials/:name', component: serial_component_1.SerialComponent },
+                { path: '', component: main_component_1.MainComponent, pathMatch: 'full' },
+                { path: '**', redirectTo: '', pathMatch: 'full' }
+            ])
         ],
         declarations: [
             app_component_1.AppComponent,
-            header_component_1.HeaderComponent
+            main_component_1.MainComponent,
+            header_component_1.HeaderComponent,
+            serial_component_1.SerialComponent,
+            register_component_1.RegisterComponent
         ],
         providers: [
-            serial_service_1.SerialService
+            serial_service_1.SerialService,
+            shared_service_1.SharedService,
+            user_service_1.UserService
         ],
         bootstrap: [app_component_1.AppComponent]
     }),

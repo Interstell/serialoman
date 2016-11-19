@@ -13,29 +13,38 @@ var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
-require("rxjs/add/operator/do");
-var SerialService = (function () {
-    function SerialService(_http) {
+var UserService = (function () {
+    function UserService(_http) {
         this._http = _http;
     }
-    SerialService.prototype.getSerialsBriefly = function () {
-        return this._http.get('/api/serials?briefly=true')
+    UserService.prototype.register = function (userObject) {
+        return this._http.post('/api/users/register', userObject)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    SerialService.prototype.getSerialById = function (id) {
-        return this._http.get('/api/serials/serial_id/' + id)
+    UserService.prototype.login = function (email, password) {
+        return this._http.post('/api/users/login', { email: email, password: password })
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    SerialService.prototype.handleError = function (error) {
+    ;
+    UserService.prototype.logout = function () {
+        return this._http.get('/api/users/logout')
+            .catch(this.handleError);
+    };
+    UserService.prototype.getUserInfo = function () {
+        return this._http.get('/api/user')
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    UserService.prototype.handleError = function (error) {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
-    return SerialService;
+    return UserService;
 }());
-SerialService = __decorate([
+UserService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], SerialService);
-exports.SerialService = SerialService;
-//# sourceMappingURL=serial.service.js.map
+], UserService);
+exports.UserService = UserService;
+//# sourceMappingURL=user.service.js.map

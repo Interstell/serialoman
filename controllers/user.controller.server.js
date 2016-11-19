@@ -28,7 +28,10 @@ exports.registerNewUser = function (req,res) {
                     if (err){
                         res.status(500).json({error: 'Internal server error'})
                     }
-                    else res.json(data);
+                    else{
+                        data.password = undefined;
+                        res.json(data);
+                    }
                 });
             }
         });

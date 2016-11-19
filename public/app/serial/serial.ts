@@ -1,6 +1,7 @@
 
 export interface ISerial{
     _id: string,
+    serial_id: number,
     _v: number
     name: string,
     rus_name:string,

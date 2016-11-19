@@ -7,7 +7,7 @@ const userController = require('../controllers/user.controller.server');
 
 let authorizeRequest = function(req, res, next){
     if (!req.isAuthenticated())
-        res.sendStatus(401);
+        res.json({error: 'Not authorized', errorCode: 401});
     else next();
 };
 
@@ -20,15 +20,22 @@ router.get('/', function(req, res, next) {
 //#region User
 
 router.get('/user', authorizeRequest, (req, res) => {
+    req.user.password = undefined;
     res.json(req.user);
 });
 
-router.post('/user/register',(req, res) => {
+router.post('/users/register',(req, res) => {
     userController.registerNewUser(req, res);
 });
 
 router.post('/users/login', passport.authenticate('local'), (req, res) => {
+    req.user.password = undefined;
     res.send(req.user);
+});
+
+router.get('/users/logout', (req, res) => {
+    req.logout();
+    res.json({success: true});
 });
 
 //#endregion
@@ -38,8 +45,12 @@ router.get('/serials', (req, res) => {
     serialController.getSerials(req, res);
 });
 
-router.get('/serials/id/:serial_id', (req, res) =>{
+router.get('/serials/id/:_id', (req, res) =>{
     serialController.getSerialById(req,res);
+});
+
+router.get('/serials/serial_id/:serial_id', (req, res) => {
+    serialController.getSerialBySerialId(req, res);
 });
 
 router.get('/serials/name/:serial_name', (req, res) => {

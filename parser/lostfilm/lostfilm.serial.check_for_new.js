@@ -34,4 +34,4 @@ exports.checkForNewSerials = function () {
         .catch(err => console.log(err.message));
 };
 
-//exports.checkForNewSerials();
+exports.checkForNewSerials();

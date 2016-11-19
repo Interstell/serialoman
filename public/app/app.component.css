@@ -1,7 +1,8 @@
-li {
-    font-size: large;
-}
+main, footer {
+  padding-left: 300px; }
 
-div.panel-heading {
-   font-size: x-large; 
-}
+@media only screen and (max-width: 992px) {
+  main, footer {
+    padding-left: 0; } }
+
+/*# sourceMappingURL=app.component.css.map */
