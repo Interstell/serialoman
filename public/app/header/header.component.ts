@@ -14,6 +14,8 @@ declare const $: any;
 export class HeaderComponent implements AfterViewInit, OnInit{
     pageTitle: string = 'Serialoman';
     briefSerials : ISerial[];
+    popularSerials: ISerial[];
+    archiveSerials: ISerial[];
     user: IUser;
     email: string;
     password: string;
@@ -31,6 +33,8 @@ export class HeaderComponent implements AfterViewInit, OnInit{
             .subscribe(
                 response => {
                     this.user = response;
+                    this.email='';
+                    this.password='';
                 }
             )
     }
@@ -51,7 +55,17 @@ export class HeaderComponent implements AfterViewInit, OnInit{
             .subscribe(
                 serials => this.briefSerials = serials,
                 error => console.error(<any>error)
-            )
+            );
+        this._serialService.getPopularSerials()
+            .subscribe(
+                serials => this.popularSerials = serials,
+                error => console.error(<any>error)
+            );
+        this._serialService.getArchiveSerials()
+            .subscribe(
+                serials => this.archiveSerials = serials,
+                error => console.error(<any>error)
+            );
         this._userService.getUserInfo()
             .subscribe(
                 value => {
@@ -64,7 +78,7 @@ export class HeaderComponent implements AfterViewInit, OnInit{
 
     ngAfterViewInit():void {
         $('.button-collapse').sideNav({
-                menuWidth: 300
+            menuWidth: 300
         });
         setTimeout(() => {
             $('.collapsible').collapsible();

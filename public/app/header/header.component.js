@@ -28,6 +28,8 @@ var HeaderComponent = (function () {
         this._userService.login(this.email, this.password)
             .subscribe(function (response) {
             _this.user = response;
+            _this.email = '';
+            _this.password = '';
         });
     };
     HeaderComponent.prototype.onLogout = function () {
@@ -43,6 +45,10 @@ var HeaderComponent = (function () {
         var _this = this;
         this._serialService.getSerialsBriefly()
             .subscribe(function (serials) { return _this.briefSerials = serials; }, function (error) { return console.error(error); });
+        this._serialService.getPopularSerials()
+            .subscribe(function (serials) { return _this.popularSerials = serials; }, function (error) { return console.error(error); });
+        this._serialService.getArchiveSerials()
+            .subscribe(function (serials) { return _this.archiveSerials = serials; }, function (error) { return console.error(error); });
         this._userService.getUserInfo()
             .subscribe(function (value) {
             if (!value.error)

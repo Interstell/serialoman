@@ -26,7 +26,7 @@
         </div>
         <ul class="collapsible" data-collapsible="accordion">
             <li>
-                <div class="collapsible-header active"><i class="material-icons">filter_drama</i>О сериале</div>
+                <div class="collapsible-header active"><i class="material-icons">movie</i>О сериале</div>
                 <div class="collapsible-body">
                     <p>
                         <b>Страна: </b>{{serial.prod_country}}<br>
@@ -37,11 +37,11 @@
                 </div>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Описание</div>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>Описание</div>
                 <div class="collapsible-body"><p>{{serial.description}}</p></div>
             </li>
             <li *ngIf="serial.plot">
-                <div class="collapsible-header"><i class="material-icons">whatshot</i>Сюжет</div>
+                <div class="collapsible-header"><i class="material-icons">receipt</i>Сюжет</div>
                 <div class="collapsible-body"><p>{{serial.plot}}</p></div>
             </li>
         </ul>

@@ -1,5 +1,6 @@
 const LFEpisodeParser = require('./lostfilm.episode.parser');
 const episodeDBManager = require('../episode/episode.db.manager');
+const moment = require('moment');
 
 exports.parseAllEpisodes = function(){ //dev function for initialize parsing
     let all_episodes;
@@ -37,7 +38,7 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
         let new_episodes = [];
         let runner = function(){
             let sequence = Promise.resolve();
-            for (let i = 0; i < 1000; i+=15){
+            for (let i = 0; i < 200; i+=15){
                 let episodes_on_page = [];
                 sequence = sequence
                     .then(() => LFEpisodeParser.getAllEpisodesOnPage(episodes_on_page, i))
@@ -79,11 +80,11 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
     })
 };
 
-/*exports.checkForNewEpisodes()
+exports.checkForNewEpisodes()
     .then(episodes => {
         console.log(`[LF Parser]: ${episodes.length} new episodes parsed.`);
-        episodes.forEach(episode => console.log(`\t${episode.serial_name} S${episode.season}E${episode.episode_number} (${episode.release_date})`));
-    });*/
+        episodes.forEach(episode => console.log(`\t${episode.serial_name} S${episode.season}E${(episode.episode_number)?episode.episode_number:0} (${moment(episode.release_date).format('DD/MM/YYYY HH:mm:ss Z')})`));
+    });
 
 
 //exports.parseAllEpisodes();

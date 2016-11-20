@@ -42,8 +42,8 @@
         </div></li>
         <li *ngIf="!user" class="bold"><a href="#login_modal" class="waves-effect waves-orange">Войти</a></li>
         <li *ngIf="!user" class="bold"><a routerLink="/register" routerLinkActive="active" class="waves-effect waves-orange">Зарегистрироваться</a></li>
-        <li *ngIf="user" (click)="onLogout()" class="bold"><a href="#" class="waves-effect waves-orange">Выйти</a></li>
-        <div *ngIf="!user" class="divider"></div>
+        <li *ngIf="user" (click)="onLogout()" class="bold"><a class="waves-effect waves-orange">Выйти</a></li>
+        <div class="divider"></div>
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
                 <li>
@@ -51,6 +51,34 @@
                     <div class="collapsible-body">
                         <ul>
                             <li *ngFor="let serial of briefSerials">
+                                <a routerLink="{{getSerialUrl(serial)}}" routerLinkActive="active" class="serial-link truncate waves-effect waves-orange" [style.border-color]="serial.poster_color">{{serial.rus_name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-orange"><i class="material-icons">arrow_drop_down</i>Популярные сериалы</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li *ngFor="let serial of popularSerials">
+                                <a routerLink="{{getSerialUrl(serial)}}" routerLinkActive="active" class="serial-link truncate waves-effect waves-orange" [style.border-color]="serial.poster_color">{{serial.rus_name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-orange"><i class="material-icons">arrow_drop_down</i>Архивные сериалы</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li *ngFor="let serial of archiveSerials">
                                 <a routerLink="{{getSerialUrl(serial)}}" routerLinkActive="active" class="serial-link truncate waves-effect waves-orange" [style.border-color]="serial.poster_color">{{serial.rus_name}}</a>
                             </li>
                         </ul>

@@ -58,11 +58,11 @@ passport.use(new LocalStrategy({
         usernameField:'email'
     },
     function(email, password, done) {
-        console.log("Auth %s:%s", email, password);
+        console.log("[Auth] email: %s", email);
         User
             .findOne({
                 email: email,
-                password: userCtrl.HashSha512(password, ENV_VARIABLES.password_salt)
+                password: userCtrl.HashMD5(password, ENV_VARIABLES.password_salt)
             })
             .exec((err, user) => {
                 if (!user)

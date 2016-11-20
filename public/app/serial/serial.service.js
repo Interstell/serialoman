@@ -28,6 +28,16 @@ var SerialService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    SerialService.prototype.getPopularSerials = function () {
+        return this._http.get('/api/serials?briefly=true&is_on_air=true')
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    SerialService.prototype.getArchiveSerials = function () {
+        return this._http.get('/api/serials?briefly=true&is_on_air=false')
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     SerialService.prototype.handleError = function (error) {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };

@@ -22,6 +22,18 @@ export class SerialService{
             .catch(this.handleError);
     }
 
+    getPopularSerials():Observable<ISerial[]> {
+        return this._http.get('/api/serials?briefly=true&is_on_air=true')
+            .map((response: Response) => <ISerial[]>response.json())
+            .catch(this.handleError);
+    }
+
+    getArchiveSerials():Observable<ISerial[]>{
+        return this._http.get('/api/serials?briefly=true&is_on_air=false')
+            .map((response: Response) => <ISerial[]>response.json())
+            .catch(this.handleError);
+    }
+
     private handleError(error : Response){
         return Observable.throw(error.json().error || 'Server error');
     }
