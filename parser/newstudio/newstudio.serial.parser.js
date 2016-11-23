@@ -115,13 +115,18 @@ exports.getOMDBData = function (serials) {
     return sequence.then(() => Promise.resolve(serials));
 };
 
-
-/*exports.parseSerialNamesFromIndexPage()
+exports.filterOMDBData = function(serials){
+    return serials.filter(serial => serial.omdb_data
+        && !serial.omdb_data.Error
+        && serial.omdb_data.Year.length == 5 //e.g. 2012-
+        && serial.omdb_data.Type == 'series'
+    );
+}
+exports.parseSerialNamesFromIndexPage()
     .then(serials => exports.getSerialsOriginalNames(serials))
     .then(serials => serials.filter(serial => serial.orig_name))
-    .then(serials => console.log(serials));*/
-
-exports.getOMDBData(sampleSerials)
-    .then(serials => serials.filter(serial => serial.omdb_data && !serial.omdb_data.Error))
-    .then(serials => serials.filter(serial => serial.omdb_data.Year.length <= 5))
     .then(serials => console.log(serials));
+
+/*exports.getOMDBData(sampleSerials)
+    .then(serials => exports.filterOMDBData(serials))
+    .then(serials => console.log(serials));*/
