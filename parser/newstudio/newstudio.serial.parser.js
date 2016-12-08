@@ -93,14 +93,16 @@ exports.getSerialsOriginalNames = function (serials) {
                     let body = $('.post_body').text();
                     let content = body.match(/Год выхода: ([\d]+)/);
                     serial.start_year = content?parseInt(content[1]):null;
-                    content = body.match(/Жанр: ([А-Яа-я+ ,]+)Режиссер/);
+                    content = body.match(/Жанр: ([А-Яа-я+ ,]+)((Режиссер)|(Создатель))/);
                     serial.genres = content?content[1].match(/([^,]+)/g).map(el => el.trim().toLowerCase()):null;
                     content = body.match(/Режиссер: ([^:]+)В ролях/);
                     serial.directors = content?content[1]:null;
                     content = body.match(/В ролях: ([^:]+)О фильме/);
                     serial.actors = content?content[1]:null;
                     content = body.match(/О фильме:([^|]+)Над релизом/);
-                    serial.description = content?content[1]:null;
+                    serial.plot = content?content[1]:null;
+                    //console.log($('.postImg').get(0).attribs.title);
+                    //serial.poster = $('.postImg img')[0].attr('src');
                     resolve(serial);
                 }
             });
@@ -116,7 +118,7 @@ exports.getSerialsOriginalNames = function (serials) {
             })
             .then(() => waitSomeTimeBecauseOfDos())
             .then(() => getInfoFromEpisodePage(current_serial))
-            .then(serial => console.log(serial))
+            //.then(serial => console.log(serial))
             .then(() => waitSomeTimeBecauseOfDos());
     }
     return sequence.then(() => Promise.resolve(serials));
@@ -150,34 +152,14 @@ exports.filterOMDBData = function(serials){
 };
 
 exports.fillObjectToSuitModel = function (serial) {
-    return{
-        name: serial.rus_name + ' ('+serial.orig_name+')',
-        rus_name:serial.rus_name,
-        orig_name: serial.orig_name,
-        url: serial.url,
-        source: serial.source,
-        poster: serial.omdb_data.Poster, //todo change to newstudio's
-        prod_country: serial.omdb_data.Country,
-        //start_year: parseInt(serial.omdb_data.Year.match(/([\d]+)/)[1]),
-        //genres: serial.omdb_data.Genre.match(/([^,]+)/g).map(el => el.trim()),
-        seasons_num: parseInt(serial.omdb_data.totalSeasons),
-        is_on_air: true,
-        own_site: null,
-        //description: null,
-        //actors: (serial.omdb_data.Actors && serial.omdb_data.Actors != 'N/A')?serial.omdb_data.Actors:null,
-        //directors: (serial.omdb_data.Director && serial.omdb_data.Director != 'N/A')?serial.omdb_data.Director:null,
-        scriptwriters: (serial.omdb_data.Writer && serial.omdb_data.Writer != 'N/A')?serial.omdb_data.Writer:null,
-        plot: (serial.omdb_data.Plot && serial.omdb_data.Plot != 'N/A')?serial.omdb_data.Plot:null
-    }
+
+        serial.name = serial.rus_name + ' ('+serial.orig_name+')';
+        serial.poster = serial.omdb_data.Poster;
+        serial.prod_country= (serial.omdb_data.Country && serial.omdb_data.Country != 'N/A')?serial.omdb_data.Country:null;
+        serial.seasons_num= parseInt(serial.omdb_data.totalSeasons);
+        serial.is_on_air= true;
+        serial.own_site= null;
+        serial.description = null;
+        serial.scriptwriters= (serial.omdb_data.Writer && serial.omdb_data.Writer != 'N/A')?serial.omdb_data.Writer:null;
+        return Promise.resolve(serial);
 };
-
-
-exports.parseSerialNamesFromIndexPage()
-    .then(serials => exports.getSerialsOriginalNames(serials))
-    .then(serials => serials.filter(serial => serial.orig_name))
-    .then(serials => console.log(serials));
-
-/*exports.getOMDBData(sampleSerials)
-    .then(serials => exports.filterOMDBData(serials))
-    .then(serials => serials.map(serial => exports.fillObjectToSuitModel(serial)))
-    .then(serials => console.log(serials));*/

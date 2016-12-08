@@ -49,7 +49,7 @@ exports.addNewSerialToDB = function(new_serial){
   });
 };
 
-exports.addColors = function(new_serial){
+/*exports.addColors = function(new_serial){
     Serial
         .find({})
         .exec((err, serials) => {
@@ -62,4 +62,4 @@ exports.addColors = function(new_serial){
                    });
                }))
         });
-};
+};*/

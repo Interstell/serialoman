@@ -31,8 +31,7 @@ let serialSchema = new Schema({
         required:true
     },
     poster_color:{
-        type:String,
-        required:true
+        type:String
     },
     prod_country:{
         type:String
