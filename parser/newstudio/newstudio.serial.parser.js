@@ -1,9 +1,7 @@
 const request = require('request'),
     cheerio = require('cheerio'),
     fs = require('fs'),
-    ENV_VARIABLES = require('../env_variables.js'),
     moment = require('moment');
-
 
 let sampleSerials = [{ rus_name: 'Атланта',
     url: 'http://newstudio.tv//viewforum.php?f=491',
@@ -35,7 +33,7 @@ let sampleSerials = [{ rus_name: 'Атланта',
 
 exports.parseSerialNamesFromIndexPage = function () {
     return new Promise((resolve, reject) => {
-        request({uri:'http://newstudio.tv/', headers : { Cookie : ENV_VARIABLES.newstudio.cookies },
+        request({uri:'http://newstudio.tv/', headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
                 method:'GET'}, (err, res, page) => {
             if (!err && res.statusCode == 200){
                 let serials = [];
@@ -59,7 +57,7 @@ exports.getSerialsOriginalNames = function (serials) {
     let test = 0;
     function getSerialName(serial){
         return new Promise((resolve, reject)=>{
-            request({uri:serial.url, headers : { Cookie : ENV_VARIABLES.newstudio.cookies },
+            request({uri:serial.url, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
                 method:'GET'}, (err, res, page) => {
                 if (!err && res.statusCode == 200){
                     let $ = cheerio.load(page,{decodeEntities: false});
@@ -122,11 +120,12 @@ exports.filterOMDBData = function(serials){
         && serial.omdb_data.Type == 'series'
     );
 }
-exports.parseSerialNamesFromIndexPage()
+
+/*exports.parseSerialNamesFromIndexPage()
     .then(serials => exports.getSerialsOriginalNames(serials))
     .then(serials => serials.filter(serial => serial.orig_name))
-    .then(serials => console.log(serials));
-
-/*exports.getOMDBData(sampleSerials)
-    .then(serials => exports.filterOMDBData(serials))
     .then(serials => console.log(serials));*/
+
+exports.getOMDBData(sampleSerials)
+    .then(serials => exports.filterOMDBData(serials))
+    .then(serials => console.log(serials));

@@ -2,7 +2,6 @@ const request = require('request'),
     cheerio = require('cheerio'),
     windows1251 = require('windows-1251'),
     fs = require('fs'),
-    ENV_VARIABLES = require('../env_variables.js'),
     moment = require('moment');
 
 exports.getAllEpisodesOnPage = function (episodes, offset) {
@@ -96,7 +95,7 @@ exports.addDownloadLinksToEpisode = function (episode) {
         request({
                 url : episode.download_page_url,
                 headers : {
-                    Cookie : ENV_VARIABLES.lostfilm.cookies
+                    Cookie : process.env.LOSTFILM_COOKIES
                 }
             },
             function (error, response, body) {

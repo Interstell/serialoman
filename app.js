@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -8,10 +9,14 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const crypto = require('crypto');
-
-const ENV_VARIABLES = require('./env_variables.js');
 const User = require('./models/user.model');
 const userCtrl = require('./controllers/user.controller.server');
+
+try{
+    require.resolve('dotenv');
+    require('dotenv').config({silent:true});
+}
+catch(e){}
 
 const api = require('./routes/api');
 
@@ -27,7 +32,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-    secret: ENV_VARIABLES.cookie_secret,
+    secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: true
 }));
@@ -62,7 +67,7 @@ passport.use(new LocalStrategy({
         User
             .findOne({
                 email: email,
-                password: userCtrl.HashMD5(password, ENV_VARIABLES.password_salt)
+                password: userCtrl.HashMD5(password, process.env.PASSWORD_SALT)
             })
             .exec((err, user) => {
                 if (!user)

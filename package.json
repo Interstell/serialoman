@@ -23,5 +23,8 @@
     "request": "^2.78.0",
     "serve-favicon": "~2.3.0",
     "windows-1251": "^1.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^2.0.0"
   }
 }

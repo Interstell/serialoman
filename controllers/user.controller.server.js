@@ -1,6 +1,5 @@
 const User = require('../models/user.model');
 const crypto = require('crypto');
-const ENV_VARIABLES = require('../env_variables');
 const passport = require('passport');
 
 exports.HashMD5 = function(password, salt){
@@ -20,7 +19,7 @@ exports.registerNewUser = function (req,res) {
             else {
                 if (req.body.password1 != req.body.password2)
                     return res.json({error: 'Passwords do not match.'});
-                req.body.password = exports.HashMD5(req.body.password1, ENV_VARIABLES.password_salt);
+                req.body.password = exports.HashMD5(req.body.password1, process.env.PASSWORD_SALT);
                 let user = new User(req.body);
                 user.save((err, data) => {
                     if (err){

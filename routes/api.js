@@ -30,7 +30,7 @@ router.post('/users/register',(req, res) => {
 
 router.post('/users/login', passport.authenticate('local'), (req, res) => {
     req.user.password = undefined;
-    res.send(req.user);
+    res.json(req.user);
 });
 
 router.get('/users/logout', (req, res) => {
