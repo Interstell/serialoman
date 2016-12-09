@@ -4,6 +4,7 @@ const passport = require('passport');
 const serialController = require('../controllers/serial.controller.server');
 const episodeController = require('../controllers/episode.controller.server');
 const userController = require('../controllers/user.controller.server');
+const subscriptionController = require('../controllers/subscription.controller.server');
 
 let authorizeRequest = function(req, res, next){
     if (!req.isAuthenticated())
@@ -40,7 +41,7 @@ router.get('/users/logout', (req, res) => {
 
 //#endregion
 
-//#region serials
+//#region Serials
 router.get('/serials', (req, res) => {
     serialController.getSerials(req, res);
 });
@@ -58,7 +59,7 @@ router.get('/serials/name/:serial_name', (req, res) => {
 });
 //#endregion
 
-//#region episodes
+//#region Episodes
 router.get('/episodes', (req, res) => {
     episodeController.getEpisodes(req, res);
 });
@@ -67,6 +68,18 @@ router.get('/episodes/id/:episode_id', (req, res) => {
     episodeController.getEpisodeById(req, res);
 });
 
+//#endregion
+
+//#region Subscriptions
+router.get('/subscriptions', authorizeRequest, (req, res) => {
+    subscriptionController.getSubscriptions(req, res);
+});
+router.post('/subscriptions', authorizeRequest, (req, res) => {
+    subscriptionController.addSubscription(req, res);
+});
+router.put('/subscriptions', authorizeRequest, (req, res) => {
+    subscriptionController.editSubscription(req, res);
+});
 //#endregion
 
 

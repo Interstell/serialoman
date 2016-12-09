@@ -6,20 +6,20 @@ let Schema = mongoose.Schema;
 mongoose.Promise = Promise;
 
 let subscriptionSchema = new Schema({
-    user:{
-        type: mongoose.Types.ObjectId,
-        required: true
-    },
-    notification_method:{
-        type: String, //email, browser
+    user_id:{
+        type: Schema.Types.ObjectId,
         required: true
     },
     serial_orig_name: {
         type: String,
         required: true
     },
-    episode_source: {
-        type: String,
+    notification_methods:{
+        type: [String], //email, browser
+        required: true
+    },
+    episode_sources: {
+        type: [String],
         required: true
     }
 });
