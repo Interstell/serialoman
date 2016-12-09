@@ -10,6 +10,10 @@ let subscriptionSchema = new Schema({
         type: mongoose.Types.ObjectId,
         required: true
     },
+    notification_method:{
+        type: String, //email, browser
+        required: true
+    },
     serial_orig_name: {
         type: String,
         required: true

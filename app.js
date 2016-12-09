@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -6,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const crypto = require('crypto');
@@ -17,6 +17,11 @@ try{
     require('dotenv').config({silent:true});
 }
 catch(e){}
+
+const mongoose = require('mongoose');
+if (!mongoose.connection.readyState){
+    mongoose.connect(process.env.MONGODB_URI);
+}
 
 const api = require('./routes/api');
 
@@ -33,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
     secret: process.env.COOKIE_SECRET,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     resave: false,
     saveUninitialized: true
 }));
