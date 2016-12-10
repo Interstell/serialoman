@@ -3,34 +3,6 @@ const request = require('request'),
     fs = require('fs'),
     moment = require('moment');
 
-let sampleSerials = [{ rus_name: 'Атланта',
-    url: 'http://newstudio.tv//viewforum.php?f=491',
-    source: 'newstudio',
-    orig_name: 'Atlanta' },
-    { rus_name: 'Балерины',
-        url: 'http://newstudio.tv//viewforum.php?f=263',
-        source: 'newstudio',
-        orig_name: 'Bunheads' },
-    { rus_name: 'Банши',
-        url: 'http://newstudio.tv//viewforum.php?f=287',
-        source: 'newstudio',
-        orig_name: 'Banshee' },
-    { rus_name: 'Батл Крик',
-        url: 'http://newstudio.tv//viewforum.php?f=380',
-        source: 'newstudio' },
-    { rus_name: 'Бедлам',
-        url: 'http://newstudio.tv//viewforum.php?f=224',
-        source: 'newstudio',
-        orig_name: 'Bedlam' },
-    { rus_name: 'Без координат',
-        url: 'http://newstudio.tv//viewforum.php?f=191',
-        source: 'newstudio',
-        orig_name: 'Off the Map' },
-    { rus_name: 'Безмозглые',
-        url: 'http://newstudio.tv//viewforum.php?f=477',
-        source: 'newstudio',
-        orig_name: 'Braindead' }];
-
 exports.parseSerialNamesFromIndexPage = function () {
     return new Promise((resolve, reject) => {
         request({uri:'http://newstudio.tv/', headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
@@ -159,7 +131,6 @@ exports.filterOMDBData = function(serials){
 };
 
 exports.fillObjectToSuitModel = function (serial) {
-
         serial.name = serial.rus_name + ' ('+serial.orig_name+')';
         serial.poster = serial.omdb_data.Poster;
         serial.prod_country= (serial.omdb_data.Country && serial.omdb_data.Country != 'N/A')?serial.omdb_data.Country:null;
