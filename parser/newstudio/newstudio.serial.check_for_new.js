@@ -1,5 +1,6 @@
 const NSSerialParser = require('./newstudio.serial.parser');
 const SerialDbManager = require('../serial/serial.db.manager');
+const fs = require('fs');
 
 var sampleSerials = [
     { rus_name: '10 причин моей ненависти',
@@ -85,11 +86,28 @@ var sampleSerials = [
 ];
 
 exports.checkForNewSerials = function () {
-    /*NSSerialParser.parseSerialNamesFromIndexPage()
-        .then(serials => NSSerialParser.getSerialsOriginalNames(serials));*/
     let all_serials;
-    Promise.resolve(sampleSerials)
-        .then(serials => serials.filter(serial => serial.orig_name))
+    /*.then(serials => {
+     fs.writeFile('data.json', JSON.stringify(serials,null,3), (err) => {
+     if (err)
+     console.error(err);
+     console.log('saved');
+     });
+     });*/
+    /*function readData(){
+     return new Promise((resolve, reject) => {
+     fs.readFile('data.json', (err, data) => {
+     if (err)
+     reject(err);
+     resolve(JSON.parse(data));
+     })
+     })
+     }
+     readData()*/
+
+    NSSerialParser.parseSerialNamesFromIndexPage()
+        .then(serials => NSSerialParser.getSerialsOriginalNames(serials))
+        .then(serials => serials.filter(serial => serial.orig_name && serial.start_year && serial.genres && serial.active_translation))
         .then(serials => {
             all_serials = serials;
             return serials;

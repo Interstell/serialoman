@@ -64,6 +64,7 @@ exports.getSerialsOriginalNames = function (serials) {
                     let topics = $('.torTopic b');
                     if ($(topics).length){
                         let first_topic = $(topics).get(0);
+
                         let test = $(first_topic).text().match(/\/ ([^\(]+)/);
                         serial.topic_url = 'http://newstudio.tv' + $(first_topic).parent().attr('href').slice(1);
                         serial.orig_name = $(first_topic).text().match(/\/ ([^\(]+)/)[1]
@@ -86,14 +87,14 @@ exports.getSerialsOriginalNames = function (serials) {
     }
     function getInfoFromEpisodePage(serial){
         return new Promise((resolve, reject)=>{
-            request({uri:serial.topic_url, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
+            request({uri:serial.topic_url, headers : { Cookie : process.env.NEWSTUDIO_COOKIES, timeout: 10000 },
                 method:'GET'}, (err, res, page) => {
                 if (!err && res.statusCode == 200) {
                     let $ = cheerio.load(page, {decodeEntities: false});
                     let body = $('.post_body').text();
                     let content = body.match(/Год выхода: ([\d]+)/);
                     serial.start_year = content?parseInt(content[1]):null;
-                    content = body.match(/Жанр: ([А-Яа-я+ ,]+)((Режиссер)|(Создатель))/);
+                    content = body.match(/Жанр: ([А-Яа-я+ ,\/]+)((Режиссер)|(Создатель))/);
                     serial.genres = content?content[1].match(/([^,]+)/g).map(el => el.trim().toLowerCase()):null;
                     content = body.match(/Режиссер: ([^:]+)В ролях/);
                     serial.directors = content?content[1]:null;
@@ -103,8 +104,13 @@ exports.getSerialsOriginalNames = function (serials) {
                     serial.plot = content?content[1]:null;
                     //console.log($('.postImg').get(0).attribs.title);
                     //serial.poster = $('.postImg img')[0].attr('src');
-                    resolve(serial);
+                    let last_post_year = $($('.viewtopic .small')[0]).text().match(/(20[\d]{2})/);
+                    if (last_post_year){
+                        serial.active_translation = (parseInt(moment().format('YYYY')) - parseInt(last_post_year[1]) <= 2);
+                    }
+                    else serial.active_translation = true;
                 }
+                resolve(serial);
             });
         })
     }
@@ -118,7 +124,7 @@ exports.getSerialsOriginalNames = function (serials) {
             })
             .then(() => waitSomeTimeBecauseOfDos())
             .then(() => getInfoFromEpisodePage(current_serial))
-            //.then(serial => console.log(serial))
+            .then(serial => console.log(serial))
             .then(() => waitSomeTimeBecauseOfDos());
     }
     return sequence.then(() => Promise.resolve(serials));
@@ -131,6 +137,7 @@ exports.getOMDBData = function (serials) {
                 method:'GET'}, (err, res, page) => {
                 if (!err && res.statusCode == 200){
                     serial.omdb_data = JSON.parse(page);
+                    console.log(serial.omdb_data);
                 }
                 resolve(serial);
             });
