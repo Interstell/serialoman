@@ -19,8 +19,7 @@ let episodeSchema = new Schema({
         required:true
     },
     episode_name:{
-        type:String,
-        required:true
+        type:String
     },
     episode_url:{
         type:String,
