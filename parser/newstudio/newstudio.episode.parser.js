@@ -2,8 +2,6 @@ const request = require('request');
 const cheerio = require('cheerio');
 const moment = require('moment');
 
-process.env.NEWSTUDIO_COOKIES = 'bb_data=a%3A3%3A%7Bs%3A2%3A%22uk%22%3BN%3Bs%3A3%3A%22uid%22%3Bi%3A298117%3Bs%3A3%3A%22sid%22%3Bs%3A20%3A%22fWuyvVDgt13IjQ2dxfwm%22%3B%7D; b=b';
-
 exports.fillEpisodeWithModelInfo = function(episode) {
     return new Promise((resolve, reject) => {
         request({uri:episode.episode_url, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },

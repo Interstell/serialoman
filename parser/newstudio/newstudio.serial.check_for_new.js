@@ -30,4 +30,4 @@ exports.checkForNewSerials = function () {
         .then(serials => console.log(`[NSParser]: ${serials.length} new serials added.`));
 };
 
-exports.checkForNewSerials();
+//exports.checkForNewSerials();

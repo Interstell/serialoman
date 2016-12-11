@@ -23,6 +23,9 @@ if (!mongoose.connection.readyState){
     mongoose.connect(process.env.MONGODB_URI);
 }
 
+const AppCron = require('./cron/jobs');
+AppCron.startJobs();
+
 const api = require('./routes/api');
 
 const app = express();

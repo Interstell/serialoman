@@ -71,20 +71,16 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
             sequence = sequence
                 .catch(err => {
                     if (err.message != '')
-                        console.log(err.message)
+                        console.error(err.message)
                 });
-            return sequence;
+            return sequence = sequence.then(() => Promise.resolve(new_episodes));
         };
         runner()
-            .then(() => resolve(new_episodes));
+            .then(episodes => {
+                console.log(`[LF Parser]: ${episodes.length} new episodes parsed and added to DB.`);
+                episodes.forEach(episode => console.log(`\t${episode.serial_name} S${episode.season}E${(episode.episode_number)?episode.episode_number:0} (${moment(episode.release_date).format('DD/MM/YYYY HH:mm:ss Z')})`));
+            });
     })
 };
 
-exports.checkForNewEpisodes()
-    .then(episodes => {
-        console.log(`[LF Parser]: ${episodes.length} new episodes parsed and added to DB.`);
-        episodes.forEach(episode => console.log(`\t${episode.serial_name} S${episode.season}E${(episode.episode_number)?episode.episode_number:0} (${moment(episode.release_date).format('DD/MM/YYYY HH:mm:ss Z')})`));
-    });
-
-
-//exports.parseAllEpisodes();
+//exports.checkForNewEpisodes();

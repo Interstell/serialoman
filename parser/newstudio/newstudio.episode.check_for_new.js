@@ -75,7 +75,6 @@ exports.checkForNewEpisodes = function () {
             console.log(`[NS Parser]: ${releases.length} new episodes parsed and added to DB.`);
             releases.forEach(episode => console.log(`\t${episode.serial_name} S${episode.season}E${(episode.episode_number)?episode.episode_number:0} (${moment(episode.release_date).format('DD/MM/YYYY HH:mm:ss Z')})`));
         });
-
 };
 
-exports.checkForNewEpisodes();
+//exports.checkForNewEpisodes();
