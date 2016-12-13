@@ -2,9 +2,11 @@ const LFEpisodeParser = require('./lostfilm.episode.parser');
 const episodeDBManager = require('../episode/episode.db.manager');
 const moment = require('moment');
 
+
+
 exports.parseAllEpisodes = function(){ //dev function for initialize parsing
     let all_episodes;
-    LFEpisodeParser.getAllEpisodes(0, 75)
+    LFEpisodeParser.getAllEpisodes(0, 120)
         .then(episodes => all_episodes = episodes)
         .then(episodes => episodes.map(episode => episodeDBManager.checkForSerialExistanceInDBByEpisode(episode)))
         .then(episodes => Promise.all(episodes))
@@ -38,7 +40,7 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
         let new_episodes = [];
         let runner = function(){
             let sequence = Promise.resolve();
-            for (let i = 0; i < 200; i+=15){
+            for (let i = 0; i < 120; i+=15){
                 let episodes_on_page = [];
                 sequence = sequence
                     .then(() => LFEpisodeParser.getAllEpisodesOnPage(episodes_on_page, i))
@@ -84,3 +86,4 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
 };
 
 //exports.checkForNewEpisodes();
+

@@ -4,16 +4,14 @@ const moment = require('moment');
 
 exports.fillEpisodeWithModelInfo = function(episode) {
     return new Promise((resolve, reject) => {
-        request({uri:episode.episode_url, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
+        request({uri:episode.episode_url,
+            headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
             method:'GET'}, (err, res, page) => {
             if (!err && res.statusCode == 200) {
                 let $ = cheerio.load(page, {decodeEntities: false});
-                if (!episode.icon){
-                    episode.icon = $($('.postImg').get(0)).attr('title');
-                }
                 let post_text = $($('.post_wrap').get(0)).text();
                 episode.season = parseInt(post_text.match(/Сезон: ([\d]+)/)[1]);
-                let date = $('.add-on span').text().trim();
+                let date = $('.add-on span').text();
                 let date_regex = /((Сегодня)|(Вчера)) ([\d]{2}):([\d]{2})/;
                 if (date.includes('Сегодня')){
                     let hours = date.match(date_regex)[4];
@@ -30,7 +28,6 @@ exports.fillEpisodeWithModelInfo = function(episode) {
                 }
                 let name = post_text.match(/Название серии: ([^А-Я]+)/)
                 episode.episode_name = name?name[1]:null;
-                //console.log(episode);
             }
             resolve();
         });
@@ -127,6 +124,7 @@ exports.getAllEpisodesOfSerial = function (serial) {
                         episode.download_urls[0].link = 'http://newstudio.tv' + $(elem).find('.span1 a').attr('href').slice(1);
                         episode.episode_url = 'http://newstudio.tv' + $(elem).find('.torTopic').attr('href').slice(1);
                         episode.download_page_url = episode.episode_url;
+                        episode.icon = `http://newstudio.tv/images/posters/${serial.url.match(/([\d]+)/)}.jpg`;
                         all_episodes.push(episode);
                     });
                     resolve();
@@ -195,7 +193,7 @@ exports.parseReleasesOnPage = function (page) {
                     episode.download_urls[0].link = 'http://newstudio.tv' + $(elem).find('.tr-dl').attr('href').slice(1);
                     episode.episode_url = 'http://newstudio.tv' + $(elem).find('.genmed').attr('href').slice(1);
                     episode.download_page_url = episode.episode_url;
-                    //console.log(episode);
+                    episode.icon = 'http://newstudio.tv' + $(elem).find('.gen img').attr('src');
                     releases_on_page.push(episode);
                 });
                 resolve(releases_on_page);

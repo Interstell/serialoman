@@ -12,11 +12,9 @@ const crypto = require('crypto');
 const User = require('./models/user.model');
 const userCtrl = require('./controllers/user.controller.server');
 
-try{
-    require.resolve('dotenv');
+if (app.get('env') === 'development') {
     require('dotenv').config({silent:true});
 }
-catch(e){}
 
 const mongoose = require('mongoose');
 if (!mongoose.connection.readyState){

@@ -96,7 +96,7 @@ exports.getSerialsOriginalNames = function (serials) {
             })
             .then(() => waitSomeTimeBecauseOfDos())
             .then(() => getInfoFromEpisodePage(current_serial))
-            .then(serial => console.log(serial))
+            //.then(serial => console.log(serial))
             .then(() => waitSomeTimeBecauseOfDos());
     }
     return sequence.then(() => Promise.resolve(serials));
@@ -109,7 +109,6 @@ exports.getOMDBData = function (serials) {
                 method:'GET'}, (err, res, page) => {
                 if (!err && res.statusCode == 200){
                     serial.omdb_data = JSON.parse(page);
-                    console.log(serial.omdb_data);
                 }
                 resolve(serial);
             });

@@ -40,10 +40,10 @@ exports.addNewSerialToDB = function(new_serial){
               value++;
               let serial = new Serial(new_serial);
               serial.serial_id = value;
-              serial.save((err)=>{
+              serial.save((err, data)=>{
                   if (err)
                       reject(err);
-                  resolve(true);
+                  resolve(data);
               });
           });
   });

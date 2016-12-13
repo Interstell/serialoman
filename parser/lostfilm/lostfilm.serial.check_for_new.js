@@ -30,8 +30,11 @@ exports.checkForNewSerials = function () {
         .then(serials => Promise.all(serials))
         .then(serials => serials.map(val => serialDBManager.addNewSerialToDB(val)))
         .then(serials => Promise.all(serials))
-        .then(serials => console.log(`[LF Parser]: ${serials.length} new serials added`))
-        .catch(err => console.log(err.message));
+        .then(serials => {
+            console.log(`[LF Parser]: ${serials.length} new serials added`);
+            serials.forEach(serial => console.log(`\t${serial.rus_name} (${serial.orig_name})`))
+        })
+        .catch(err => console.error(err.message));
 };
 
 //exports.checkForNewSerials();

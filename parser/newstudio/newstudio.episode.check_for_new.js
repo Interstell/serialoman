@@ -50,7 +50,7 @@ exports.checkForNewEpisodes = function () {
                 .then(releases => all_releases = all_releases.concat(releases))
                 .then(() => nsEpisodeParser.waitSomeTimeBecauseOfDos());
         }
-        sequence = sequence.then(() => Promise.resolve(all_releases))
+        sequence = sequence.then(() => Promise.resolve(all_releases));
         return sequence;
     }
     let all_releases;
@@ -69,6 +69,7 @@ exports.checkForNewEpisodes = function () {
         .then(releases => releases.filter(release => !release.exists))
         .then(releases => releases.map(release => release.episode))
         .then(releases => nsEpisodeParser.fillEpisodesWithModelInfo(releases))
+        .then(releases => releases.filter(release => release.release_date)) //because of 403
         .then(releases => releases.map(release => episodeDbManager.addNewEpisodeToDB(release)))
         .then(releases => Promise.all(releases))
         .then(releases =>{
