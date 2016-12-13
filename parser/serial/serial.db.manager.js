@@ -32,7 +32,20 @@ exports.checkForSerialExistanceInDB = function(serial){
     });
 };
 
-exports.addNewSerialToDB = function(new_serial){
+function setTotalSerialsCount() {
+    return new Promise((resolve, reject) => {
+        if (TotalSerialsInDb)
+            return resolve();
+        Serial
+            .count({})
+            .exec((err, value) => {
+                TotalSerialsInDb = value;
+                resolve();
+            });
+    })
+}
+
+exports.addNewSerialToDB = function(new_serial){ //todo indeces not working
   return new Promise((resolve, reject) => {
       Serial
           .count({})

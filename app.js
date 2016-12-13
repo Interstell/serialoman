@@ -12,21 +12,22 @@ const crypto = require('crypto');
 const User = require('./models/user.model');
 const userCtrl = require('./controllers/user.controller.server');
 
-if (app.get('env') === 'development') {
-    require('dotenv').config({silent:true});
-}
-
 const mongoose = require('mongoose');
 if (!mongoose.connection.readyState){
     mongoose.connect(process.env.MONGODB_URI);
 }
 
-const AppCron = require('./cron/jobs');
-AppCron.startJobs();
-
 const api = require('./routes/api');
 
 const app = express();
+
+if (app.get('env') === 'development') {
+    require('dotenv').config({silent:true});
+}
+
+const AppCron = require('./cron/jobs');
+//AppCron.startJobs();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -58,12 +59,12 @@ passport.deserializeUser(function(id, done) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public-mdl')));
 
 app.use('/api', api);
 
 app.all("/*", (req, res, next) => {
-    res.sendFile("index.html", { root: __dirname + "/public" });
+    res.sendFile("index.html", { root: __dirname + "/public-mdl" });
 });
 
 passport.use(new LocalStrategy({
