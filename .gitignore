@@ -51,6 +51,4 @@ data_samples
 materialize
 
 #MDL Lib
-mdl-style.scss
-mdl-style.css
-mdl-style.css.map
+mdl
