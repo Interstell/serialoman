@@ -49,3 +49,8 @@ data_samples
 
 #Materialize Lib
 materialize
+
+#MDL Lib
+mdl-style.scss
+mdl-style.css
+mdl-style.css.map
