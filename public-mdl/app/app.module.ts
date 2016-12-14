@@ -9,6 +9,8 @@ import {MainComponent} from "./main/main.component";
 import {MdlModule} from "angular2-mdl";
 import {UserService} from "./user/user.service";
 import {LoginDialogComponent} from "./user/login-dialog.component";
+import {SerialComponent} from "./serial/serial.component";
+import {SerialService} from "./serial/serial.service";
 
 @NgModule({
     imports: [
@@ -17,6 +19,7 @@ import {LoginDialogComponent} from "./user/login-dialog.component";
         ReactiveFormsModule,
         MdlModule,
         RouterModule.forRoot([
+            {path:'serials/:name', component: SerialComponent},
             {path:'', component: MainComponent, pathMatch: 'full'},
             {path:'**', redirectTo:'', pathMatch: 'full'}
         ])
@@ -24,11 +27,13 @@ import {LoginDialogComponent} from "./user/login-dialog.component";
     declarations: [
         AppComponent,
         MainComponent,
-        LoginDialogComponent
+        LoginDialogComponent,
+        SerialComponent
     ],
     entryComponents: [LoginDialogComponent],
     providers: [
-        UserService
+        UserService,
+        SerialService
     ],
     bootstrap: [ AppComponent ]
 })

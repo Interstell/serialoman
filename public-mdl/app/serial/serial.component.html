@@ -1,0 +1,50 @@
+<div class="mdl-grid" *ngIf="serial">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        <mdl-card class="wm-serial-poster" mdl-shadow="2">
+            <div class="wm-serial-poster-image">
+                <!--- [style.background-image]="'url(' + serial.poster + ')'" -->
+                <img class="mdl-cell--middle" [src]="serial.poster">
+            </div>
+            <mdl-card-title>
+                <h2 mdl-card-title-text>{{serial.rus_name}}</h2>
+            </mdl-card-title>
+            <mdl-card-supporting-text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Mauris sagittis pellentesque lacus eleifend lacinia...
+            </mdl-card-supporting-text>
+            <mdl-card-actions mdl-card-border>
+                <button mdl-button mdl-colored mdl-ripple>Get Started</button>
+            </mdl-card-actions>
+            <mdl-card-menu>
+                <button mdl-button mdl-button-type="icon" mdl-ripple>
+                    <mdl-icon>share</mdl-icon>
+                </button>
+            </mdl-card-menu>
+        </mdl-card>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-grid">
+            <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+                <p><b>Страна: </b> {{serial.prod_country}}</p>
+                <p><b>Год выхода: </b> {{serial.start_year}}</p>
+                <p><b>Количество сезонов: </b> {{serial.seasons_num}}</p>
+                <p><b>Статус: </b> {{serial.is_on_air?'снимается':'закончен'}}</p>
+                <!--- <p><b>Описание: </b>{{serial.description}}</p> -->
+            </div>
+            <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+                <p><b>Страна: </b> {{serial.prod_country}}</p>
+                <p><b>Год выхода: </b> {{serial.start_year}}</p>
+                <p><b>Количество сезонов: </b> {{serial.seasons_num}}</p>
+                <p><b>Статус: </b> {{serial.is_on_air?'снимается':'закончен'}}</p>
+                <!--- <p><b>Описание: </b>{{serial.description}}</p> -->
+            </div>
+            <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+                <p><b>Страна: </b> {{serial.prod_country}}</p>
+                <p><b>Год выхода: </b> {{serial.start_year}}</p>
+                <p><b>Количество сезонов: </b> {{serial.seasons_num}}</p>
+                <p><b>Статус: </b> {{serial.is_on_air?'снимается':'закончен'}}</p>
+                <!--- <p><b>Описание: </b>{{serial.description}}</p> -->
+            </div>
+        </div>
+    </div>
+</div>

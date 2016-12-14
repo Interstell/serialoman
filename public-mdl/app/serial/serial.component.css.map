@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,iBAAiB;EACf,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EAEV,6CAAG;IACD,KAAK,EAAE,IAAI;IACX,OAAO,EAAE,KAAK;IACd,MAAM,EAAE,MAAM;;AAKpB,eAAe;EACb,gBAAgB,EAAE,IAAI;EACtB,aAAa,EAAE,GAAG;EAClB,OAAO,EAAE,SAAS",
+"sources": ["serial.component.scss"],
+"names": [],
+"file": "serial.component.css"
+}

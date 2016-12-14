@@ -1,0 +1,17 @@
+.wm-serial-poster{
+  width: 100%;
+  margin: auto;
+  .wm-serial-poster-image{
+    img{
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.wm-serial-info{
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 30px 10px;
+}
