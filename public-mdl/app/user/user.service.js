@@ -14,6 +14,7 @@ require("../rxjs.operators");
 var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
+        this.user = null;
     }
     UserService.prototype.register = function (userObject) {
         return this._http.post('/api/users/register', userObject).toPromise().then(function (res) { return res.json() || {}; });

@@ -17,6 +17,7 @@ var app_component_1 = require("./app.component");
 var main_component_1 = require("./main/main.component");
 var angular2_mdl_1 = require("angular2-mdl");
 var user_service_1 = require("./user/user.service");
+var login_dialog_component_1 = require("./user/login-dialog.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,7 +28,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
-            forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
             angular2_mdl_1.MdlModule,
             router_1.RouterModule.forRoot([
                 { path: '', component: main_component_1.MainComponent, pathMatch: 'full' },
@@ -36,8 +37,10 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            main_component_1.MainComponent
+            main_component_1.MainComponent,
+            login_dialog_component_1.LoginDialogComponent
         ],
+        entryComponents: [login_dialog_component_1.LoginDialogComponent],
         providers: [
             user_service_1.UserService
         ],

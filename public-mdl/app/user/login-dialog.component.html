@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+<div>
+    <h3 class="mdl-dialog__title">Войти на сайт</h3>
+    <div class="mdl-dialog__content">
+        <mdl-textfield type="text" label="Email" formControlName="email" floating-label></mdl-textfield>
+        <br/>
+        <mdl-textfield type="password" label="Пароль" formControlName="password" floating-label></mdl-textfield>
+        <br/>
+        <span [hidden]="credentialsCorrect" class="wm-form-field-invalid">
+            Неверный email или пароль.
+        </span>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button [disabled]="!form.valid" (click)="login()" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Войти</button>
+    </div>
+</div>
+</form>

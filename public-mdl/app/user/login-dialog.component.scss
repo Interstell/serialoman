@@ -1,0 +1,9 @@
+@import "../../node_modules/angular2-mdl/scss/variables";
+
+.wm-form-field-invalid{
+  color: $input-text-error-color;
+  position: absolute;
+  font-size: $input-text-floating-label-fontsize;
+  margin-top: 3px;
+  display: block;
+}

@@ -2,7 +2,7 @@
 <html>
 
 <head lang="en">
-    <title>Acme Product Management</title>
+    <title>WatchMan</title>
     <meta charset="UTF-8">
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
 
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
-    
+
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
@@ -31,6 +31,9 @@
     <wm-app>
         <div style="height: 100px; width: 100px" class="mdl-spinner mdl-js-spinner is-active"></div>
     </wm-app>
+    <dialog-outlet></dialog-outlet>
+
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 </body>
 
 </html>

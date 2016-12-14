@@ -8,7 +8,7 @@ const subscriptionController = require('../controllers/subscription.controller.s
 
 let authorizeRequest = function(req, res, next){
     if (!req.isAuthenticated())
-        res.json({error: 'Not authorized', errorCode: 401});
+        res.status(401).end();
     else next();
 };
 

@@ -5,7 +5,10 @@ import {IUser} from "./user";
 
 @Injectable()
 export class UserService{
+    public user : IUser = null;
+
     constructor(private _http: Http){}
+
 
     register(userObject: Object):Promise<IUser>{
         return this._http.post('/api/users/register', userObject).toPromise().then(res => res.json() || {});

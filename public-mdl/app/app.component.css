@@ -1,3 +1,24 @@
+.wm-user-header {
+  height: 120px;
+  padding: 16px;
+  background-color: #ddd; }
 
+.wm-user-avatar {
+  margin-top: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px; }
+
+.wm-user-email {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+  margin-top: 5px; }
+  .wm-user-email a {
+    color: #000; }
+
+.wm-user-login-btn {
+  width: 100%;
+  text-align: left;
+  bottom: 0;
+  margin-top: 80px; }
 
 /*# sourceMappingURL=app.component.css.map */

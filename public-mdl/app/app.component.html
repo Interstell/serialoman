@@ -13,11 +13,20 @@
             </mdl-layout-header-row>
         </mdl-layout-header>
         <mdl-layout-drawer>
-            <mdl-layout-title>Title</mdl-layout-title>
+            <mdl-layout-title>
+
+            </mdl-layout-title>
+            <div class="wm-user-header">
+                <img *ngIf="user" class="wm-user-avatar" [src]="user.avatar">
+                <div *ngIf="user" class="wm-user-email"><a>{{user.email}}</a></div>
+                <button class="wm-user-login-btn" *ngIf="user === null" (click)="showLoginDialog()" mdl-button mdl-ripple>
+                    Войти на сайт
+                </button>
+            </div>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link">Link</a>
                 <a class="mdl-navigation__link">Link</a>
-                <a class="mdl-navigation__link">Link</a>
+                <a *ngIf="user" class="mdl-navigation__link" (click)="logout()" ><b>Выйти</b></a>
             </nav>
         </mdl-layout-drawer>
         <mdl-layout-content>
