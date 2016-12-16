@@ -1,0 +1,46 @@
+<div class="mdl-grid">
+
+
+        <!-- <mdl-textfield
+                type="text"
+                label="Text..."
+                [(ngModel)]="searchText"
+                autocomplete="off"
+                placeholder="Введите название сериала..."
+                autofocus>
+        </mdl-textfield>
+
+    {{searchText}} -->
+
+    <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
+    <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet">
+        <div class="wm-serials-search-container mdl-shadow--4dp">
+            <form [formGroup]="form" novalidate (ngSubmit)="onSubmitString(form)">
+                <div>
+                    <i class="material-icons">search</i>
+                    <mdl-textfield type="text" label="Введите название сериала..." formControlName="searchString" autocomplete="off" floating-label autofocus></mdl-textfield>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="serials && serials.length > 0">
+            <div *ngFor="let serial of serials" class="wm-serial-panel mdl-shadow--4dp" (click)="navigateToSerial(serial)">
+                    <div class="mdl-grid">
+                        <div class="wm-serial-poster-container mdl-cell mdl-cell--middle mdl-cell--3-col-desktop mdl-cell-2-col-tablet">
+                            <img class="wm-serial-poster" [src]="serial.poster">
+                        </div>
+                        <div class="wm-serial-description mdl-cell mdl-cell--middle mdl-cell--9-col-desktop mdl-cell-6-col-tablet">
+                            <h6 class="wm-serial-name">{{serial.rus_name}}</h6>
+                            <h6 class="wm-serial-orig-name">{{serial.orig_name}}</h6>
+                            <p class="wm-serial-year">({{serial.start_year}})</p>
+                            <p *ngIf="serial.actors">В ролях: {{getActorsShortened(serial.actors)}}</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
+
+
+</div>
+

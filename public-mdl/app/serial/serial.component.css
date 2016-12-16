@@ -7,8 +7,20 @@
     margin: 0 auto; }
 
 .wm-serial-info {
+  margin-top: 0;
+  margin-bottom: 16px;
   background-color: #fff;
   border-radius: 2px;
-  padding: 30px 10px; }
+  padding: 15px 0; }
+  .wm-serial-info h6 {
+    margin-top: 0; }
+  .wm-serial-info .content {
+    margin: 0 15px; }
+  .wm-serial-info .material-icons {
+    position: relative;
+    top: 5px; }
+
+mdl-card-supporting-text p span, .wm-serial-plot p span {
+  border-bottom: 1px dotted; }
 
 /*# sourceMappingURL=serial.component.css.map */

@@ -11,14 +11,18 @@ import {UserService} from "./user/user.service";
 import {LoginDialogComponent} from "./user/login-dialog.component";
 import {SerialComponent} from "./serial/serial.component";
 import {SerialService} from "./serial/serial.service";
+import {SerialsListComponent} from "./serials-list/serials-list.component";
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
+        FormsModule,
         ReactiveFormsModule,
         MdlModule,
         RouterModule.forRoot([
+            {path:'serials', component: SerialsListComponent},
+            {path:'serials/page/:page', component: SerialsListComponent},
             {path:'serials/:name', component: SerialComponent},
             {path:'', component: MainComponent, pathMatch: 'full'},
             {path:'**', redirectTo:'', pathMatch: 'full'}
@@ -28,7 +32,8 @@ import {SerialService} from "./serial/serial.service";
         AppComponent,
         MainComponent,
         LoginDialogComponent,
-        SerialComponent
+        SerialComponent,
+        SerialsListComponent
     ],
     entryComponents: [LoginDialogComponent],
     providers: [

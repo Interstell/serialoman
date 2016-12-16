@@ -8,7 +8,7 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
     let offset = (req.query.offset)? parseInt(req.query.offset):0;
     let briefSelectString = '';
     if (briefly && briefly != 'false'){
-        briefSelectString = '_id serial_id name rus_name orig_name source genres is_on_air poster_color';
+        briefSelectString = '_id serial_id name rus_name orig_name start_year is_on_air poster actors poster_color';
         if (!req.query.size)
             size = 0;
     }

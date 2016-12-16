@@ -20,6 +20,7 @@ var user_service_1 = require("./user/user.service");
 var login_dialog_component_1 = require("./user/login-dialog.component");
 var serial_component_1 = require("./serial/serial.component");
 var serial_service_1 = require("./serial/serial.service");
+var serials_list_component_1 = require("./serials-list/serials-list.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,9 +31,12 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
+            forms_1.FormsModule,
             forms_1.ReactiveFormsModule,
             angular2_mdl_1.MdlModule,
             router_1.RouterModule.forRoot([
+                { path: 'serials', component: serials_list_component_1.SerialsListComponent },
+                { path: 'serials/page/:page', component: serials_list_component_1.SerialsListComponent },
                 { path: 'serials/:name', component: serial_component_1.SerialComponent },
                 { path: '', component: main_component_1.MainComponent, pathMatch: 'full' },
                 { path: '**', redirectTo: '', pathMatch: 'full' }
@@ -42,7 +46,8 @@ AppModule = __decorate([
             app_component_1.AppComponent,
             main_component_1.MainComponent,
             login_dialog_component_1.LoginDialogComponent,
-            serial_component_1.SerialComponent
+            serial_component_1.SerialComponent,
+            serials_list_component_1.SerialsListComponent
         ],
         entryComponents: [login_dialog_component_1.LoginDialogComponent],
         providers: [

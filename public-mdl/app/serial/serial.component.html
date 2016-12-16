@@ -1,50 +1,94 @@
 <div class="mdl-grid" *ngIf="serial">
     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        <mdl-card class="wm-serial-poster" mdl-shadow="2">
-            <div class="wm-serial-poster-image">
-                <!--- [style.background-image]="'url(' + serial.poster + ')'" -->
-                <img class="mdl-cell--middle" [src]="serial.poster">
-            </div>
-            <mdl-card-title>
-                <h2 mdl-card-title-text>{{serial.rus_name}}</h2>
-            </mdl-card-title>
-            <mdl-card-supporting-text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Mauris sagittis pellentesque lacus eleifend lacinia...
-            </mdl-card-supporting-text>
-            <mdl-card-actions mdl-card-border>
-                <button mdl-button mdl-colored mdl-ripple>Get Started</button>
-            </mdl-card-actions>
-            <mdl-card-menu>
-                <button mdl-button mdl-button-type="icon" mdl-ripple>
-                    <mdl-icon>share</mdl-icon>
-                </button>
-            </mdl-card-menu>
-        </mdl-card>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+            <mdl-card class="wm-serial-poster" mdl-shadow="2">
+                <div class="wm-serial-poster-image">
+                    <img class="mdl-cell--middle" [src]="serial.poster">
+                </div>
+                <mdl-card-title>
+                    <h2 mdl-card-title-text>{{serial.rus_name}}</h2>
+                </mdl-card-title>
+                <mdl-card-supporting-text *ngIf="serial.description">
+                    {{descriptionBrief}}<p *ngIf="descriptionBrief.length < serial.description.length" (click)="showFullDescription()"><span>Показать полностью...</span></p>
+                </mdl-card-supporting-text>
+                <mdl-card-actions mdl-card-border>
+                    <button mdl-button mdl-colored mdl-ripple>Get Started</button>
+                </mdl-card-actions>
+                <mdl-card-menu>
+                    <button mdl-button mdl-button-type="icon" mdl-ripple>
+                        <mdl-icon>share</mdl-icon>
+                    </button>
+                </mdl-card-menu>
+            </mdl-card>
+        </div>
     </div>
+
     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        <div class="mdl-grid">
-            <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
-                <p><b>Страна: </b> {{serial.prod_country}}</p>
-                <p><b>Год выхода: </b> {{serial.start_year}}</p>
-                <p><b>Количество сезонов: </b> {{serial.seasons_num}}</p>
-                <p><b>Статус: </b> {{serial.is_on_air?'снимается':'закончен'}}</p>
-                <!--- <p><b>Описание: </b>{{serial.description}}</p> -->
-            </div>
-            <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
-                <p><b>Страна: </b> {{serial.prod_country}}</p>
-                <p><b>Год выхода: </b> {{serial.start_year}}</p>
-                <p><b>Количество сезонов: </b> {{serial.seasons_num}}</p>
-                <p><b>Статус: </b> {{serial.is_on_air?'снимается':'закончен'}}</p>
-                <!--- <p><b>Описание: </b>{{serial.description}}</p> -->
-            </div>
-            <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
-                <p><b>Страна: </b> {{serial.prod_country}}</p>
-                <p><b>Год выхода: </b> {{serial.start_year}}</p>
-                <p><b>Количество сезонов: </b> {{serial.seasons_num}}</p>
-                <p><b>Статус: </b> {{serial.is_on_air?'снимается':'закончен'}}</p>
-                <!--- <p><b>Описание: </b>{{serial.description}}</p> -->
+        <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+            <div class="content"><h6><mdl-icon>subscriptions</mdl-icon> Статус подписки</h6></div>
+            <hr>
+            <div class="content"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu aliquet ipsum. Etiam mi velit, auctor nec cursus quis, posuere vitae sapien. Pellentesque sed justo eget nisi auctor sodales. Proin et purus sit amet neque auctor ultrices. </p></div>
+        </div>
+        <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+            <div class="content"><h6><mdl-icon>info_outline</mdl-icon> Информация о сериале</h6></div>
+            <hr>
+            <div class="content">
+            <b>Оригинальное название: </b> {{serial.orig_name}}
+            <br>
+            <b *ngIf="serial.prod_country">Страна: </b> {{serial.prod_country}}
+            <br>
+            <b *ngIf="serial.start_year">Год выхода: </b> {{serial.start_year}}
+            <br>
+            <b *ngIf="serial.seasons_num">Количество сезонов: </b> {{serial.seasons_num}}
+            <br>
+            <b>Статус: </b> {{serial.is_on_air?'снимается':'закончен'}}
             </div>
         </div>
+        <div *ngIf="serial.plot && plotBrief" class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+            <div class="content"><h6><mdl-icon>description</mdl-icon> Сюжет</h6></div>
+            <hr>
+            <div class="content wm-serial-plot">
+                {{plotBrief}}<p *ngIf="plotBrief.length < serial.plot.length" (click)="showFullPlot()"><span>Показать полностью...</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        <mdl-tabs mdl-ripple mdl-tab-active-index="0">
+            <mdl-tab-panel mdl-tab-panel mdl-tab-panel-title="Сезон 1">
+                    <ul>
+                        <li>Eddard</li>
+                        <li>Catelyn</li>
+                        <li>Robb</li>
+                        <li>Sansa</li>
+                        <li>Brandon</li>
+                        <li>Arya</li>
+                        <li>Rickon</li>
+                    </ul>
+            </mdl-tab-panel>
+            <mdl-tab-panel mdl-tab-panel-title="Сезон 2">
+                <ul>
+                    <li>Tywin</li>
+                    <li>Cersei</li>
+                    <li>Jamie</li>
+                    <li>Tyrion</li>
+                </ul>
+            </mdl-tab-panel>
+            <mdl-tab-panel mdl-tab-panel-title="Сезон 3">
+                <ul>
+                    <li>Viserys</li>
+                    <li>Daenerys</li>
+                </ul>
+            </mdl-tab-panel>
+            <mdl-tab-panel mdl-tab-panel-title="Сезон 4">
+                    <ul>
+                        <li>Robert</li>
+                        <li>Renly</li>
+                        <li>Stanis</li>
+                        <li>Joffrey</li>
+                        <li>Myrcella</li>
+                        <li>Tommen</li>
+                    </ul>
+            </mdl-tab-panel>
+        </mdl-tabs>
     </div>
 </div>

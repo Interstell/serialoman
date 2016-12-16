@@ -22,7 +22,17 @@ var SerialComponent = (function () {
         this._serialService.getSerialById(this.serialId)
             .then(function (serial) {
             _this.serial = serial;
+            if (serial.description) {
+                _this.descriptionBrief = _this.serial.description.slice(0, 100).trim() + '...';
+                _this.plotBrief = _this.serial.description.slice(0, 200).trim() + '...';
+            }
         });
+    };
+    SerialComponent.prototype.showFullDescription = function () {
+        this.descriptionBrief = this.serial.description;
+    };
+    SerialComponent.prototype.showFullPlot = function () {
+        this.plotBrief = this.serial.plot;
     };
     SerialComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -30,6 +40,9 @@ var SerialComponent = (function () {
             _this.serialId = +params['name'].match(/([\d]+)-/)[1];
             _this.fetchData();
         });
+    };
+    SerialComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
     };
     return SerialComponent;
 }());
