@@ -14,12 +14,12 @@
                 <tr>
                     <td class="back-container">
                         <button (click)="goBack()" *ngIf="page != 1" class="back" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
-                            Назад
+                            <i class="material-icons">chevron_left</i>Назад
                         </button>
                     </td>
                     <td class="forward-container">
                         <button (click)="goForward()" *ngIf="page * resultsOnPage < totalSerialsCount" class="forward" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
-                            Вперёд
+                            Вперёд<i class="material-icons">chevron_right</i>
                         </button>
                     </td>
                 </tr>

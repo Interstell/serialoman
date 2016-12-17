@@ -68,6 +68,10 @@ router.get('/episodes/id/:episode_id', (req, res) => {
     episodeController.getEpisodeById(req, res);
 });
 
+router.get('/episodes/:serial_id/:season/:episode', (req, res) => {
+   episodeController.getEpisodesStrictly(req, res);
+});
+
 //#endregion
 
 //#region Subscriptions

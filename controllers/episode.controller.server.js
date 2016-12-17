@@ -1,4 +1,5 @@
 const Episode = require('../models/episode.model');
+const Serial = require('../models/serial.model');
 
 exports.getEpisodes = function(req, res){
     let size = (req.query.size)? parseInt(req.query.size): 30;
@@ -39,6 +40,29 @@ exports.getEpisodes = function(req, res){
             if (err)
                 res.status(500).json(err);
             res.json(data);
+        });
+};
+
+exports.getEpisodesStrictly = function(req, res){
+    let serial_id = parseInt(req.params.serial_id);
+    let season_num = parseInt(req.params.season);
+    let episode_num = parseInt(req.params.episode);
+    Serial
+        .findOne({serial_id: serial_id})
+        .exec((err, serial) => {
+            if (!err){
+                Episode
+                    .find({serial_orig_name: new RegExp(serial.orig_name,'i')})
+                    .find({season: season_num})
+                    .find({episode_number: episode_num})
+                    .exec((err, data) => {
+                        if(!err){
+                            res.json(data);
+                        }
+                        else res.status(500).json(err);
+                    })
+            }
+            else res.status(500).json(err);
         });
 };
 
