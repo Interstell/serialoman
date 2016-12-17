@@ -19,23 +19,13 @@ var SerialsListComponent = (function () {
         this._formBuilder = _formBuilder;
         this._serialService = _serialService;
         this.page = 1;
-        this.resultsOnPage = 30;
+        this.resultsOnPage = 15;
         this.serials = null;
         this.searchString = new forms_1.FormControl('');
     }
-    Object.defineProperty(SerialsListComponent.prototype, "searchText", {
-        get: function () {
-            return this._searchText;
-        },
-        set: function (text) {
-            this._searchText = text;
-        },
-        enumerable: true,
-        configurable: true
-    });
     SerialsListComponent.prototype.fetchData = function () {
         var _this = this;
-        this._serialService.getSerialsBriefly(this.resultsOnPage, (this.page - 1) * this.resultsOnPage)
+        this._serialService.getSerialsBriefly(this.resultsOnPage, (this.page - 1) * this.resultsOnPage, this.searchString.value)
             .then(function (serials) {
             if (serials.length === 0)
                 _this._router.navigate(['/serials']);
@@ -53,7 +43,7 @@ var SerialsListComponent = (function () {
         this._router.navigate([this.getSerialUrl(serial)]);
     };
     SerialsListComponent.prototype.onSubmitString = function (form) {
-        console.log(form.value.searchString);
+        this.fetchData();
     };
     SerialsListComponent.prototype.ngOnInit = function () {
         var _this = this;

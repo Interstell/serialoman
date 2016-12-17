@@ -10,9 +10,13 @@
   }
 }
 
+.mdl-cell > .mdl-cell{
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
 .wm-serial-info{
-  margin-top: 0;
-  margin-bottom: 16px;
   background-color: #fff;
   border-radius: 2px;
   padding: 15px 0;

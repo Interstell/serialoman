@@ -8,8 +8,8 @@ import {ISerial} from "./serial";
 export class SerialService{
     constructor(private _http: Http){}
 
-    getSerialsBriefly(count: number, offset:number): Promise<ISerial[]>{
-        return this._http.get(`/api/serials?briefly=true&size=${count}&offset=${offset}`)
+    getSerialsBriefly(count: number, offset:number, search: string): Promise<ISerial[]>{
+        return this._http.get(`/api/serials?briefly=true&size=${count}&offset=${offset}&search=${search}`)
             .toPromise()
             .then(res => res.json() || {});
     }

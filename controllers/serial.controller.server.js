@@ -6,6 +6,7 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
     if (!briefly && (!size || size <= 0))
         size = 15;
     let offset = (req.query.offset)? parseInt(req.query.offset):0;
+    let searchStr = (req.query.search) ? req.query.search : 0;
     let briefSelectString = '';
     if (briefly && briefly != 'false'){
         briefSelectString = '_id serial_id name rus_name orig_name start_year is_on_air poster actors poster_color';
@@ -16,6 +17,9 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
         offset = 0;
     let sort = (req.query.sort)?parseInt(req.query.sort): 1;
     let mongooseQuery = Serial.find({});
+    if (searchStr){
+        mongooseQuery = mongooseQuery.find({$or: [{orig_name:new RegExp(searchStr,'i')}, {rus_name:new RegExp(searchStr,'i')}]})
+    }
     if (req.query.is_on_air){
         if (req.query.is_on_air == 'true')
             mongooseQuery = mongooseQuery.find({is_on_air: true});

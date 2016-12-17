@@ -10,21 +10,12 @@ import {FormGroup, FormControl, FormBuilder} from "@angular/forms";
 })
 export class SerialsListComponent implements OnInit, OnDestroy {
     page: number = 1;
-    private resultsOnPage: number = 30;
+    private resultsOnPage: number = 15;
     serials: ISerial[] = null;
     private sub: Subscription;
-    private _searchText: string;
 
     public form: FormGroup;
     public searchString = new FormControl('');
-
-    get searchText():string{
-        return this._searchText;
-    }
-
-    set searchText(text: string){
-        this._searchText = text;
-    }
 
     constructor(private _route: ActivatedRoute,
                 private _router : Router,
@@ -32,7 +23,7 @@ export class SerialsListComponent implements OnInit, OnDestroy {
                 private _serialService: SerialService) {}
 
     fetchData(){
-        this._serialService.getSerialsBriefly(this.resultsOnPage, (this.page - 1)*this.resultsOnPage)
+        this._serialService.getSerialsBriefly(this.resultsOnPage, (this.page - 1)*this.resultsOnPage, this.searchString.value)
             .then(serials => {
                 if (serials.length === 0)
                     this._router.navigate(['/serials'])
@@ -54,7 +45,7 @@ export class SerialsListComponent implements OnInit, OnDestroy {
     }
 
     onSubmitString(form: FormGroup){
-        console.log(form.value.searchString);
+        this.fetchData();
     }
 
     ngOnInit(){

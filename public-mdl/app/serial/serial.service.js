@@ -15,8 +15,8 @@ var SerialService = (function () {
     function SerialService(_http) {
         this._http = _http;
     }
-    SerialService.prototype.getSerialsBriefly = function (count, offset) {
-        return this._http.get("/api/serials?briefly=true&size=" + count + "&offset=" + offset)
+    SerialService.prototype.getSerialsBriefly = function (count, offset, search) {
+        return this._http.get("/api/serials?briefly=true&size=" + count + "&offset=" + offset + "&search=" + search)
             .toPromise()
             .then(function (res) { return res.json() || {}; });
     };
