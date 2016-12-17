@@ -21,6 +21,8 @@ var login_dialog_component_1 = require("./user/login-dialog.component");
 var serial_component_1 = require("./serial/serial.component");
 var serial_service_1 = require("./serial/serial.service");
 var serials_list_component_1 = require("./serials-list/serials-list.component");
+var episode_component_1 = require("./episode/episode.component");
+var episode_service_1 = require("./episode/episode.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,6 +40,7 @@ AppModule = __decorate([
                 { path: 'serials', component: serials_list_component_1.SerialsListComponent },
                 { path: 'serials/page/:page', component: serials_list_component_1.SerialsListComponent },
                 { path: 'serials/:name', component: serial_component_1.SerialComponent },
+                { path: 'episodes/:serial_id/:season/:episode', component: episode_component_1.EpisodeComponent },
                 { path: '', component: main_component_1.MainComponent, pathMatch: 'full' },
                 { path: '**', redirectTo: '', pathMatch: 'full' }
             ])
@@ -47,12 +50,14 @@ AppModule = __decorate([
             main_component_1.MainComponent,
             login_dialog_component_1.LoginDialogComponent,
             serial_component_1.SerialComponent,
-            serials_list_component_1.SerialsListComponent
+            serials_list_component_1.SerialsListComponent,
+            episode_component_1.EpisodeComponent
         ],
         entryComponents: [login_dialog_component_1.LoginDialogComponent],
         providers: [
             user_service_1.UserService,
-            serial_service_1.SerialService
+            serial_service_1.SerialService,
+            episode_service_1.EpisodeService
         ],
         bootstrap: [app_component_1.AppComponent]
     }),

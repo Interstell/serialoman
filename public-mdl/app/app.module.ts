@@ -12,6 +12,8 @@ import {LoginDialogComponent} from "./user/login-dialog.component";
 import {SerialComponent} from "./serial/serial.component";
 import {SerialService} from "./serial/serial.service";
 import {SerialsListComponent} from "./serials-list/serials-list.component";
+import {EpisodeComponent} from "./episode/episode.component";
+import {EpisodeService} from "./episode/episode.service";
 
 @NgModule({
     imports: [
@@ -24,6 +26,7 @@ import {SerialsListComponent} from "./serials-list/serials-list.component";
             {path:'serials', component: SerialsListComponent},
             {path:'serials/page/:page', component: SerialsListComponent},
             {path:'serials/:name', component: SerialComponent},
+            {path:'episodes/:serial_id/:season/:episode', component: EpisodeComponent},
             {path:'', component: MainComponent, pathMatch: 'full'},
             {path:'**', redirectTo:'', pathMatch: 'full'}
         ])
@@ -33,12 +36,14 @@ import {SerialsListComponent} from "./serials-list/serials-list.component";
         MainComponent,
         LoginDialogComponent,
         SerialComponent,
-        SerialsListComponent
+        SerialsListComponent,
+        EpisodeComponent
     ],
     entryComponents: [LoginDialogComponent],
     providers: [
         UserService,
-        SerialService
+        SerialService,
+        EpisodeService
     ],
     bootstrap: [ AppComponent ]
 })

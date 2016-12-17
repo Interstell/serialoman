@@ -34,4 +34,11 @@
     .wm-serial-panel .wm-serial-description .wm-serial-orig-name, .wm-serial-panel .wm-serial-description .wm-serial-year {
       color: #757575; }
 
+.wm-no-serials-found {
+  background-color: #fff;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 5px 10px;
+  text-align: center; }
+
 /*# sourceMappingURL=serials-list.component.css.map */

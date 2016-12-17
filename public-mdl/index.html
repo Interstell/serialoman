@@ -24,12 +24,20 @@
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
-
+    <style>
+        .preload{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 
 <body>
     <wm-app>
-        <div style="height: 100px; width: 100px" class="mdl-spinner mdl-js-spinner is-active"></div>
+        <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate preload" style="top: 60%; width: 200px"></div>
+        <img src="./assets/watchman-small.png" class="preload">
     </wm-app>
     <dialog-outlet></dialog-outlet>
 
