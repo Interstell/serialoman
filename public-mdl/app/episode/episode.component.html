@@ -1,3 +1,38 @@
-<div class="mdl-grid">
-
+<div class="mdl-grid" *ngIf="episode">
+    <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
+    <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet">
+        <div class="wm-episode-panel mdl-shadow--4dp">
+            <div class="mdl-grid">
+                <div class="wm-episode-icon-block mdl-cell mdl-cell--middle mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone">
+                    <img (click)="goToSerial()" [src]="episode.icon">
+                </div>
+                <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                    <h5 (click)="goToSerial()">{{episode.serial_rus_name}}</h5>
+                    <h6 (click)="goToSerial()" class="wm-gray-text">{{episode.serial_orig_name}}</h6>
+                    <p class="wm-gray-text">Сезон {{episode.season}}, серия {{episode.episode_number}}</p>
+                    <p>{{episode.episode_name}}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let rel_episode of all_episodes" class="wm-episode-panel mdl-shadow--4dp">
+            <div class="mdl-grid">
+                <div class="wm-episode-download-icon-block mdl-cell mdl-cell--middle mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone">
+                    <img src="{{(rel_episode.source == 'lostfilm')?'./assets/lostfilm.jpg':'./assets/newstudio.png'}}">
+                </div>
+                <div class="wm-episode-links-block mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                    <div *ngFor="let download_url of rel_episode.download_urls; let i=index" class="wm-episode-download-links">
+                        <p><b>Качество:</b> {{download_url.quality}}</p>
+                        <p><b>Размер:</b> {{download_url.size}}</p>
+                        <a href="{{download_url.link}}">
+                            <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                                Скачать
+                            </button>
+                        </a>
+                        <hr *ngIf="i != rel_episode.download_urls.length - 1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
 </div>

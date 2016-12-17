@@ -37,6 +37,10 @@ export class EpisodeComponent implements OnInit, OnDestroy{
             })
     }
 
+    goToSerial(){
+        this._router.navigate(['/serials/'+this.serial_id+'-'+this.episode.serial_orig_name.toLowerCase().replace(/[ &:]/g,'-')]);
+    }
+
     ngOnInit(){
         this.sub = this._route.params.subscribe(params => {
             this.serial_id = +params['serial_id'];

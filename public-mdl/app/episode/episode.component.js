@@ -34,6 +34,9 @@ var EpisodeComponent = (function () {
             }
         });
     };
+    EpisodeComponent.prototype.goToSerial = function () {
+        this._router.navigate(['/serials/' + this.serial_id + '-' + this.episode.serial_orig_name.toLowerCase().replace(/[ &:]/g, '-')]);
+    };
     EpisodeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this._route.params.subscribe(function (params) {

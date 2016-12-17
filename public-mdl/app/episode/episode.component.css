@@ -1,3 +1,22 @@
-
+.wm-episode-panel {
+  background-color: #fff;
+  padding: 5px 15px;
+  margin-bottom: 20px;
+  border-radius: 2px; }
+  .wm-episode-panel h5, .wm-episode-panel h6 {
+    margin: 0 0 5px; }
+  .wm-episode-panel p {
+    margin-bottom: 8px; }
+  .wm-episode-panel .wm-episode-icon-block {
+    text-align: center; }
+  .wm-episode-panel .wm-gray-text {
+    color: #757575; }
+  .wm-episode-panel .wm-episode-download-icon-block img {
+    max-width: 100%;
+    max-height: 100%; }
+  .wm-episode-panel .wm-episode-links-block {
+    margin: 8px; }
+    .wm-episode-panel .wm-episode-links-block p {
+      margin: 4px; }
 
 /*# sourceMappingURL=episode.component.css.map */
