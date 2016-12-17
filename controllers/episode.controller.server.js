@@ -13,7 +13,15 @@ exports.getEpisodes = function(req, res){
     let serial_name = (req.query.serial_name)?req.query.serial_name:null;
     let season_num = (req.query.season)?parseInt(req.query.season):null;
     let episode_num = (req.query.episode)?parseInt(req.query.episode):null;
+    let briefly = (req.query.briefly)?req.query.briefly:false;
+    let briefSelectString = '';
+    if (briefly && briefly != 'false'){
+        briefSelectString = '_id serial_rus_name serial_orig_name season episode_number';
+        if (!req.query.size && req.query.serial_name)
+            size = 0;
+    }
     let query = Episode.find({})
+        .select(briefSelectString)
         .limit(size)
         .skip(offset)
         .sort({release_date: -1});
