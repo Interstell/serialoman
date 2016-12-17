@@ -10,9 +10,11 @@ import {FormGroup, FormControl, FormBuilder} from "@angular/forms";
 })
 export class SerialsListComponent implements OnInit, OnDestroy {
     page: number = 1;
-    private resultsOnPage: number = 15;
+    resultsOnPage: number = 15;
     serials: ISerial[] = null;
     private sub: Subscription;
+    private subQuery: Subscription;
+    totalSerialsCount: number;
 
     public form: FormGroup;
     public searchString = new FormControl('');
@@ -24,11 +26,9 @@ export class SerialsListComponent implements OnInit, OnDestroy {
 
     fetchData(){
         this._serialService.getSerialsBriefly(this.resultsOnPage, (this.page - 1)*this.resultsOnPage, this.searchString.value)
-            .then(serials => {
-                if (serials.length === 0)
-                    this._router.navigate(['/serials'])
-                this.serials = serials;
-                console.log(this.serials);
+            .then(response => {
+                this.serials = response.serials;
+                this.totalSerialsCount = response.totalCount;
             })
     }
 
@@ -45,25 +45,57 @@ export class SerialsListComponent implements OnInit, OnDestroy {
     }
 
     onSubmitString(form: FormGroup){
-        this.fetchData();
+        this.page = 1;
+        this._router.navigateByUrl(`/serials/page/1?search=${this.searchString.value}`).then(() => {
+            this.ngOnInit();
+            //this.fetchData();
+        });
+    }
+
+    goBack(){
+        let url;
+        if (this.searchString.value){
+            url = `/serials/page/${this.page - 1}?search=${this.searchString.value}`
+        }
+        else url = `/serials/page/${this.page - 1}`;
+        this._router.navigateByUrl(url).then(() => {
+            this.ngOnInit();
+        });
+    }
+
+    goForward(){
+        let url;
+        if (this.searchString.value){
+            url = `/serials/page/${this.page + 1}?search=${this.searchString.value}`
+        }
+        else url = `/serials/page/${this.page + 1}`;
+        this._router.navigateByUrl(url).then(() => {
+            this.ngOnInit();
+        });
     }
 
     ngOnInit(){
+        this.form = this._formBuilder.group({
+            'searchString': this.searchString
+        });
         this.sub = this._route.params.subscribe(params => {
             if (params['page']){
                 this.page = +params['page'];
                 if (this.page <= 0)
                     return this._router.navigate(['/serials'])
             }
-            this.fetchData();
-        });
-        this.form = this._formBuilder.group({
-            'searchString': this.searchString
+            this.subQuery = this._route.queryParams.subscribe(params => {
+                if (params['search']){
+                    this.searchString.patchValue(params['search']);
+                }
+                this.fetchData();
+            });
         });
     }
 
     ngOnDestroy(){
         this.sub.unsubscribe();
+        this.subQuery.unsubscribe();
     }
 
 }

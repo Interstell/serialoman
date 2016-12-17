@@ -26,11 +26,9 @@ var SerialsListComponent = (function () {
     SerialsListComponent.prototype.fetchData = function () {
         var _this = this;
         this._serialService.getSerialsBriefly(this.resultsOnPage, (this.page - 1) * this.resultsOnPage, this.searchString.value)
-            .then(function (serials) {
-            if (serials.length === 0)
-                _this._router.navigate(['/serials']);
-            _this.serials = serials;
-            console.log(_this.serials);
+            .then(function (response) {
+            _this.serials = response.serials;
+            _this.totalSerialsCount = response.totalCount;
         });
     };
     SerialsListComponent.prototype.getActorsShortened = function (actors) {
@@ -43,24 +41,59 @@ var SerialsListComponent = (function () {
         this._router.navigate([this.getSerialUrl(serial)]);
     };
     SerialsListComponent.prototype.onSubmitString = function (form) {
-        this.fetchData();
+        var _this = this;
+        this.page = 1;
+        this._router.navigateByUrl("/serials/page/1?search=" + this.searchString.value).then(function () {
+            _this.ngOnInit();
+            //this.fetchData();
+        });
+    };
+    SerialsListComponent.prototype.goBack = function () {
+        var _this = this;
+        var url;
+        if (this.searchString.value) {
+            url = "/serials/page/" + (this.page - 1) + "?search=" + this.searchString.value;
+        }
+        else
+            url = "/serials/page/" + (this.page - 1);
+        this._router.navigateByUrl(url).then(function () {
+            _this.ngOnInit();
+        });
+    };
+    SerialsListComponent.prototype.goForward = function () {
+        var _this = this;
+        var url;
+        if (this.searchString.value) {
+            url = "/serials/page/" + (this.page + 1) + "?search=" + this.searchString.value;
+        }
+        else
+            url = "/serials/page/" + (this.page + 1);
+        this._router.navigateByUrl(url).then(function () {
+            _this.ngOnInit();
+        });
     };
     SerialsListComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.form = this._formBuilder.group({
+            'searchString': this.searchString
+        });
         this.sub = this._route.params.subscribe(function (params) {
             if (params['page']) {
                 _this.page = +params['page'];
                 if (_this.page <= 0)
                     return _this._router.navigate(['/serials']);
             }
-            _this.fetchData();
-        });
-        this.form = this._formBuilder.group({
-            'searchString': this.searchString
+            _this.subQuery = _this._route.queryParams.subscribe(function (params) {
+                if (params['search']) {
+                    _this.searchString.patchValue(params['search']);
+                }
+                _this.fetchData();
+            });
         });
     };
     SerialsListComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
+        this.subQuery.unsubscribe();
     };
     return SerialsListComponent;
 }());

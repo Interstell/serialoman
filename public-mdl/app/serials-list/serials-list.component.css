@@ -1,7 +1,7 @@
 .wm-serials-search-container {
   background-color: #fff;
   padding: 5px 15px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   border-radius: 2px; }
   .wm-serials-search-container .material-icons {
     position: relative;
@@ -9,6 +9,13 @@
   .wm-serials-search-container mdl-textfield {
     width: 90%;
     font-size: 20px; }
+
+.wm-pagination-buttons table, .wm-pagination-buttons tr {
+  width: 100%; }
+.wm-pagination-buttons .back-container, .wm-pagination-buttons .forward-container {
+  width: 50%; }
+.wm-pagination-buttons .forward-container {
+  text-align: right; }
 
 .wm-serial-panel {
   background-color: #fff;

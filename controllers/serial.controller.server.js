@@ -1,4 +1,5 @@
 const Serial = require ('../models/serial.model');
+const deepAssign = require('deep-assign');
 
 exports.getSerials = function(req, res){ //todo never return full episodes array, return full episode only alone
     let briefly = (req.query.briefly)?req.query.briefly:false;
@@ -17,25 +18,37 @@ exports.getSerials = function(req, res){ //todo never return full episodes array
         offset = 0;
     let sort = (req.query.sort)?parseInt(req.query.sort): 1;
     let mongooseQuery = Serial.find({});
+    let countQuery = Serial.find({});
     if (searchStr){
-        mongooseQuery = mongooseQuery.find({$or: [{orig_name:new RegExp(searchStr,'i')}, {rus_name:new RegExp(searchStr,'i')}]})
+        mongooseQuery = mongooseQuery.find({$or: [{orig_name:new RegExp(searchStr,'i')}, {rus_name:new RegExp(searchStr,'i')}]});
+        countQuery = countQuery.find({$or: [{orig_name:new RegExp(searchStr,'i')}, {rus_name:new RegExp(searchStr,'i')}]});
     }
-    if (req.query.is_on_air){
-        if (req.query.is_on_air == 'true')
+    if (req.query.is_on_air) {
+        if (req.query.is_on_air == 'true'){
             mongooseQuery = mongooseQuery.find({is_on_air: true});
-        else if (req.query.is_on_air == 'false')
+            countQuery = countQuery.find({is_on_air: true});
+        }
+        else if (req.query.is_on_air == 'false'){
             mongooseQuery = mongooseQuery.find({is_on_air: false});
+            countQuery = countQuery.find({is_on_air: false});
+        }
     }
-    mongooseQuery
-        .limit(size)
-        .skip(offset)
-        .sort({rus_name: sort})
-        .select(briefSelectString)
-        .exec((err, data) => {
-            if (err)
-                res.status(500).json(err);
-            res.json(data);
-        });
+    countQuery
+        .count((err, count) => {
+            mongooseQuery
+                .limit(size)
+                .skip(offset)
+                .sort({rus_name: sort})
+                .select(briefSelectString)
+                .exec((err, data) => {
+                    if (err)
+                        res.status(500).json(err);
+                    res.json({
+                        totalCount: count,
+                        serials: data
+                    });
+                });
+        })
 };
 
 exports.getSerialById = function(req, res){

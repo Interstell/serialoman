@@ -8,8 +8,8 @@ import {ISerial} from "./serial";
 export class SerialService{
     constructor(private _http: Http){}
 
-    getSerialsBriefly(count: number, offset:number, search: string): Promise<ISerial[]>{
-        return this._http.get(`/api/serials?briefly=true&size=${count}&offset=${offset}&search=${search}`)
+    getSerialsBriefly(count: number, offset:number, search: string): Promise<any>{
+        return this._http.get(`/api/serials?briefly=true&is_on_air=true&size=${count}&offset=${offset}&search=${search}`)
             .toPromise()
             .then(res => res.json() || {});
     }
@@ -20,19 +20,7 @@ export class SerialService{
             .then(res => res.json() || {});
     }
 
-    getPopularSerials():Promise<ISerial[]> {
-        return this._http.get('/api/serials?briefly=true&is_on_air=true')
-            .toPromise()
-            .then(res => res.json() || {});
-    }
-
-    getArchiveSerials():Promise<ISerial[]>{
-        return this._http.get('/api/serials?briefly=true&is_on_air=false')
-            .toPromise()
-            .then(res => res.json() || {});
-    }
-
     getSerialUrl(serial : ISerial):string{
-        return '/serials/'+serial.serial_id+'-'+serial.orig_name.toLowerCase().replace(/[ &]/g,'-');
+        return '/serials/'+serial.serial_id+'-'+serial.orig_name.toLowerCase().replace(/[ &:]/g,'-');
     };
 }

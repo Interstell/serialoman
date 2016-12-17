@@ -1,17 +1,4 @@
 <div class="mdl-grid">
-
-
-        <!-- <mdl-textfield
-                type="text"
-                label="Text..."
-                [(ngModel)]="searchText"
-                autocomplete="off"
-                placeholder="Введите название сериала..."
-                autofocus>
-        </mdl-textfield>
-
-    {{searchText}} -->
-
     <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
     <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet">
         <div class="wm-serials-search-container mdl-shadow--4dp">
@@ -21,6 +8,22 @@
                     <mdl-textfield type="text" label="Введите название сериала..." formControlName="searchString" autocomplete="off" floating-label autofocus></mdl-textfield>
                 </div>
             </form>
+        </div>
+        <div class="wm-pagination-buttons" *ngIf="serials">
+            <table>
+                <tr>
+                    <td class="back-container">
+                        <button (click)="goBack()" *ngIf="page != 1" class="back" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                            Назад
+                        </button>
+                    </td>
+                    <td class="forward-container">
+                        <button (click)="goForward()" *ngIf="page * resultsOnPage < totalSerialsCount" class="forward" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                            Вперёд
+                        </button>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div *ngIf="serials && serials.length > 0">
             <div *ngFor="let serial of serials" class="wm-serial-panel mdl-shadow--4dp" (click)="navigateToSerial(serial)">

@@ -16,7 +16,7 @@ var SerialService = (function () {
         this._http = _http;
     }
     SerialService.prototype.getSerialsBriefly = function (count, offset, search) {
-        return this._http.get("/api/serials?briefly=true&size=" + count + "&offset=" + offset + "&search=" + search)
+        return this._http.get("/api/serials?briefly=true&is_on_air=true&size=" + count + "&offset=" + offset + "&search=" + search)
             .toPromise()
             .then(function (res) { return res.json() || {}; });
     };
@@ -25,18 +25,8 @@ var SerialService = (function () {
             .toPromise()
             .then(function (res) { return res.json() || {}; });
     };
-    SerialService.prototype.getPopularSerials = function () {
-        return this._http.get('/api/serials?briefly=true&is_on_air=true')
-            .toPromise()
-            .then(function (res) { return res.json() || {}; });
-    };
-    SerialService.prototype.getArchiveSerials = function () {
-        return this._http.get('/api/serials?briefly=true&is_on_air=false')
-            .toPromise()
-            .then(function (res) { return res.json() || {}; });
-    };
     SerialService.prototype.getSerialUrl = function (serial) {
-        return '/serials/' + serial.serial_id + '-' + serial.orig_name.toLowerCase().replace(/[ &]/g, '-');
+        return '/serials/' + serial.serial_id + '-' + serial.orig_name.toLowerCase().replace(/[ &:]/g, '-');
     };
     ;
     return SerialService;
