@@ -22,7 +22,7 @@
             </mdl-card>
         </div>
         <div *ngIf="seasons" class="wm-seasons-panel mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
-            <mdl-tabs mdl-ripple mdl-tab-active-index="1000">
+            <mdl-tabs mdl-ripple>
                 <mdl-tab-panel *ngFor="let season of seasons; let i = index" mdl-tab-panel-title="S{{i + 1}}" [disabled]="!season.length">
                     <ul>
                         <li (click)="goToEpisode(episode)" class="wm-episode-link" *ngFor="let episode of season">{{(episode.episode_number == 0)?'Сезон полностью':'Серия '+episode.episode_number}}</li>
@@ -33,10 +33,30 @@
     </div>
 
     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
-            <div class="content"><h6><mdl-icon>subscriptions</mdl-icon> Статус подписки</h6></div>
+        <div *ngIf="serial.is_on_air" class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
+            <div class="content"><h6><mdl-icon>subscriptions</mdl-icon> Оповещение о выходе новых серий</h6></div>
             <hr>
-            <div class="content"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu aliquet ipsum. Etiam mi velit, auctor nec cursus quis, posuere vitae sapien. Pellentesque sed justo eget nisi auctor sodales. Proin et purus sit amet neque auctor ultrices. </p></div>
+            <div class="content">
+                <div *ngIf="!user">
+                    <p>Чтобы <b>подписаться</b> на выход новых серий этого сериала, необходимо <b>войти на сайт</b> или <b>зарегистрироваться.</b></p>
+                </div>
+                <div *ngIf="user && subscription === null">
+                    <p>
+                        Вы не подписаны на выход новых серий этого сериала.
+                    </p>
+                    <button (click)="subscribeForSerial()" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                        Подписаться
+                    </button>
+                </div>
+                <div *ngIf="user && subscription">
+                    <h6>Источник: </h6>
+                    <mdl-switch (click)="saveSubscription()" *ngIf="lostfilmTranslates" [(ngModel)]="lostfilmSubscribed" mdl-ripple>LostFilm</mdl-switch>
+                    <mdl-switch (click)="saveSubscription()" *ngIf="newstudioTranslates" [(ngModel)]="newstudioSubscribed" mdl-ripple>NewStudio</mdl-switch>
+                    <button (click)="unsubcribeOfSerial()" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                        Отписаться
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="wm-serial-info mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
             <div class="content"><h6><mdl-icon>info_outline</mdl-icon> Информация о сериале</h6></div>

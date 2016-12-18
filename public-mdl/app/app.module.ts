@@ -14,6 +14,7 @@ import {SerialService} from "./serial/serial.service";
 import {SerialsListComponent} from "./serials-list/serials-list.component";
 import {EpisodeComponent} from "./episode/episode.component";
 import {EpisodeService} from "./episode/episode.service";
+import {SubscriptionService} from "./subscription/subscription.service";
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import {EpisodeService} from "./episode/episode.service";
     providers: [
         UserService,
         SerialService,
-        EpisodeService
+        EpisodeService,
+        SubscriptionService
     ],
     bootstrap: [ AppComponent ]
 })

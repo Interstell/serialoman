@@ -22,9 +22,11 @@ var AppComponent = (function () {
         this._userService.getUserInfo()
             .then(function (user) {
             _this.user = user;
+            _this._userService.user = user;
         })
             .catch(function (err) {
             _this.user = null;
+            _this._userService.user = null;
         });
     };
     AppComponent.prototype.showLoginDialog = function () {

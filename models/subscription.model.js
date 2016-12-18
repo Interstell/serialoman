@@ -16,11 +16,11 @@ let subscriptionSchema = new Schema({
     },
     notification_methods:{
         type: [String], //email, browser
-        required: true
+        default: [],
     },
     episode_sources: {
         type: [String],
-        required: true
+        default: [],
     }
 });
 

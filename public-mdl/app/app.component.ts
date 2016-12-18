@@ -18,9 +18,11 @@ export class AppComponent implements OnInit{
         this._userService.getUserInfo()
             .then(user => {
                 this.user = user;
+                this._userService.user = user;
             })
             .catch(err => {
                 this.user = null;
+                this._userService.user = null;
             });
     }
 

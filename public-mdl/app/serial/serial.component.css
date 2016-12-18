@@ -17,6 +17,8 @@
   padding: 15px 0; }
   .wm-serial-info h6 {
     margin-top: 0; }
+  .wm-serial-info mdl-switch {
+    margin-bottom: 10px; }
   .wm-serial-info .content {
     margin: 0 15px; }
   .wm-serial-info .material-icons {

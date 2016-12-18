@@ -71,3 +71,17 @@ exports.editSubscription = function(req, res){
             }
         });
 };
+
+exports.deleteSubscription = function (req, res) {
+    Subscription
+        .findByIdAndRemove(req.body._id)
+        .exec((err, data) => {
+            if (err){
+                return res.status(500).json(data);
+            }
+            else if (!data){
+                res.status(404).json({error: 'No subscription on this ID found.'});
+            }
+            else res.json(data);
+        })
+};

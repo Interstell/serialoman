@@ -7,9 +7,9 @@
                     <img (click)="goToSerial()" [src]="episode.icon">
                 </div>
                 <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-                    <h5 (click)="goToSerial()">{{episode.serial_rus_name}}</h5>
-                    <h6 (click)="goToSerial()" class="wm-gray-text">{{episode.serial_orig_name}}</h6>
-                    <p class="wm-gray-text">Сезон {{episode.season}}, серия {{episode.episode_number}}</p>
+                    <h5>{{episode.serial_rus_name}}</h5>
+                    <h6 class="wm-gray-text">{{episode.serial_orig_name}}</h6>
+                    <p class="wm-gray-text">Сезон {{episode.season}} {{episode.episode_number?',серия ' + episode.episode_number:'полностью'}}</p>
                     <p>{{episode.episode_name}}</p>
                 </div>
             </div>

@@ -84,6 +84,9 @@ router.post('/subscriptions', authorizeRequest, (req, res) => {
 router.put('/subscriptions', authorizeRequest, (req, res) => {
     subscriptionController.editSubscription(req, res);
 });
+router.delete('/subscriptions', authorizeRequest, (req, res) => {
+    subscriptionController.deleteSubscription(req, res);
+});
 //#endregion
 
 

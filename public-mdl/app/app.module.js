@@ -23,6 +23,7 @@ var serial_service_1 = require("./serial/serial.service");
 var serials_list_component_1 = require("./serials-list/serials-list.component");
 var episode_component_1 = require("./episode/episode.component");
 var episode_service_1 = require("./episode/episode.service");
+var subscription_service_1 = require("./subscription/subscription.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -57,7 +58,8 @@ AppModule = __decorate([
         providers: [
             user_service_1.UserService,
             serial_service_1.SerialService,
-            episode_service_1.EpisodeService
+            episode_service_1.EpisodeService,
+            subscription_service_1.SubscriptionService
         ],
         bootstrap: [app_component_1.AppComponent]
     }),
