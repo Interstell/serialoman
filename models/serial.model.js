@@ -73,6 +73,9 @@ let serialSchema = new Schema({
     serial_id:{
        type: Number,
         required: true
+    },
+    newstudio_url:{
+       type: String
     }
 });
 

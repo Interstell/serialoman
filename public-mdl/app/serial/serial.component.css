@@ -26,4 +26,17 @@
 mdl-card-supporting-text p span, .wm-serial-plot p span {
   border-bottom: 1px dotted; }
 
+.wm-seasons-panel {
+  background-color: #fff;
+  border-radius: 2px; }
+  .wm-seasons-panel mdl-tab-panel ul {
+    padding: 0;
+    list-style: none;
+    text-align: center; }
+  .wm-seasons-panel mdl-tab-panel .wm-episode-link {
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0; }
+    .wm-seasons-panel mdl-tab-panel .wm-episode-link:hover {
+      background-color: #e0e0e0; }
+
 /*# sourceMappingURL=serial.component.css.map */

@@ -124,7 +124,7 @@ exports.getAllEpisodesOfSerial = function (serial) {
                         episode.download_urls[0].link = 'http://newstudio.tv' + $(elem).find('.span1 a').attr('href').slice(1);
                         episode.episode_url = 'http://newstudio.tv' + $(elem).find('.torTopic').attr('href').slice(1);
                         episode.download_page_url = episode.episode_url;
-                        episode.icon = `http://newstudio.tv/images/posters/${serial.url.match(/([\d]+)/)}.jpg`;
+                        episode.icon = `http://newstudio.tv/images/posters/${serial.url.match(/([\d]+)/)}.jpg`.replace(/,[\d]+/,'');
                         all_episodes.push(episode);
                     });
                     resolve();
@@ -146,7 +146,8 @@ exports.getAllEpisodesOfSerial = function (serial) {
         })
         .then(episodes => exports.groupEpisodes(episodes))
         .then(episodes => episodes.filter(episode => episode))
-        .then(episodes => exports.fillEpisodesWithModelInfo(episodes));
+        .then(episodes => exports.fillEpisodesWithModelInfo(episodes))
+        .then(episodes => episodes.filter(episode => episode.release_date));
 };
 
 exports.parseReleasesOnPage = function (page) {

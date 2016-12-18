@@ -13,4 +13,10 @@ export class EpisodeService{
             .toPromise()
             .then(res => res.json() || []);
     }
+
+    getEpisodesBrieflyByOriginalName(serial_orig_name: string):Promise<IEpisode[]>{
+        return this._http.get(`/api/episodes?serial_name=${serial_orig_name}&briefly=true`)
+            .toPromise()
+            .then(res => res.json() || []);
+    }
 }

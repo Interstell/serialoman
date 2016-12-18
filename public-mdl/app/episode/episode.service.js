@@ -20,6 +20,11 @@ var EpisodeService = (function () {
             .toPromise()
             .then(function (res) { return res.json() || []; });
     };
+    EpisodeService.prototype.getEpisodesBrieflyByOriginalName = function (serial_orig_name) {
+        return this._http.get("/api/episodes?serial_name=" + serial_orig_name + "&briefly=true")
+            .toPromise()
+            .then(function (res) { return res.json() || []; });
+    };
     return EpisodeService;
 }());
 EpisodeService = __decorate([

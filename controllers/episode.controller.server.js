@@ -16,7 +16,7 @@ exports.getEpisodes = function(req, res){
     let briefly = (req.query.briefly)?req.query.briefly:false;
     let briefSelectString = '';
     if (briefly && briefly != 'false'){
-        briefSelectString = '_id serial_rus_name serial_orig_name season episode_number';
+        briefSelectString = '_id serial_orig_name season episode_number source';
         if (!req.query.size && req.query.serial_name)
             size = 0;
     }
