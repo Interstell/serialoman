@@ -14,6 +14,7 @@ exports.getEpisodes = function(req, res){
     let season_num = (req.query.season)?parseInt(req.query.season):null;
     let episode_num = (req.query.episode)?parseInt(req.query.episode):null;
     let briefly = (req.query.briefly)?req.query.briefly:false;
+    let strictly = (req.query.strictly)?req.query.strictly: false;
     let briefSelectString = '';
     if (briefly && briefly != 'false'){
         briefSelectString = '_id serial_orig_name season episode_number source';
@@ -35,7 +36,7 @@ exports.getEpisodes = function(req, res){
         query = query.lte(before);
     }
     if (req.query.serial_name){
-        query = query.find({serial_orig_name: new RegExp(serial_name,'i')});
+        query = query.find({serial_orig_name: new RegExp(strictly?`^${serial_name}$`:serial_name,'i')});
     }
     if (req.query.season){
         query = query.find({season: season_num});

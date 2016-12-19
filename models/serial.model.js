@@ -71,10 +71,13 @@ let serialSchema = new Schema({
         type:String
     },
     serial_id:{
-       type: Number,
+        type: Number,
         required: true
     },
     newstudio_url:{
+       type: String
+    },
+    lostfilm_url:{
        type: String
     }
 });

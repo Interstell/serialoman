@@ -23,11 +23,17 @@ exports.checkForSerialExistanceInDB = function(serial){
     return new Promise ((resolve, reject)=>{
         Serial
             .findOne({$or: [{orig_name:serial.orig_name}, {rus_name:serial.rus_name}]})
-            .exec((err, serial) => {
+            .exec((err, serial_db) => {
                 if (err){
                     return reject(err);
                 }
-                (serial)?resolve(true):resolve(false);
+                if (serial_db){
+                    if (serial_db.source != serial.source){
+                        serial_db[`${serial.source}_url`] = serial.url;
+                        serial_db.save();
+                    }
+                }
+                (serial_db)?resolve(true):resolve(false);
             });
     });
 };
@@ -61,6 +67,20 @@ exports.addNewSerialToDB = function(new_serial){ //todo indeces not working
           });
   });
 };
+
+exports.normalizeIndeces = function () {
+    let i = 1;
+    Serial
+        .find({})
+        .exec((err, serials) => {
+            serials.forEach(serial => {
+                serial.serial_id = i++;
+                serial.save();
+            })
+        });
+};
+
+exports.normalizeIndeces();
 
 /*exports.addColors = function(new_serial){
     Serial

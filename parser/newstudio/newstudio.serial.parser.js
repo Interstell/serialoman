@@ -74,8 +74,7 @@ exports.getSerialsOriginalNames = function (serials) {
                     serial.actors = content?content[1]:null;
                     content = body.match(/О фильме:([^|]+)Над релизом/);
                     serial.plot = content?content[1]:null;
-                    //console.log($('.postImg').get(0).attribs.title);
-                    //serial.poster = $('.postImg img')[0].attr('src');
+                    serial.poster = $($('.postImg').get(0)).attr('title');
                     let last_post_year = $($('.viewtopic .small')[0]).text().match(/(20[\d]{2})/);
                     if (last_post_year){
                         serial.active_translation = (parseInt(moment().format('YYYY')) - parseInt(last_post_year[1]) <= 2);
@@ -131,7 +130,7 @@ exports.filterOMDBData = function(serials){
 
 exports.fillObjectToSuitModel = function (serial) {
         serial.name = serial.rus_name + ' ('+serial.orig_name+')';
-        serial.poster = serial.omdb_data.Poster;
+        //serial.poster = serial.omdb_data.Poster;
         serial.prod_country= (serial.omdb_data.Country && serial.omdb_data.Country != 'N/A')?serial.omdb_data.Country:null;
         serial.seasons_num= parseInt(serial.omdb_data.totalSeasons);
         serial.is_on_air= true;
