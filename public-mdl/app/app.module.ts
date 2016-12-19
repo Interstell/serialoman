@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, LOCALE_ID} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
@@ -15,6 +15,8 @@ import {SerialsListComponent} from "./serials-list/serials-list.component";
 import {EpisodeComponent} from "./episode/episode.component";
 import {EpisodeService} from "./episode/episode.service";
 import {SubscriptionService} from "./subscription/subscription.service";
+import {RegisterComponent} from "./register/register.component";
+import {ImageUploadModule} from "ng2-imageupload";
 
 @NgModule({
     imports: [
@@ -23,11 +25,13 @@ import {SubscriptionService} from "./subscription/subscription.service";
         FormsModule,
         ReactiveFormsModule,
         MdlModule,
+        ImageUploadModule,
         RouterModule.forRoot([
-            {path:'serials', component: SerialsListComponent},
+            {path:'serials', component: SerialsListComponent, pathMatch: 'full'},
             {path:'serials/page/:page', component: SerialsListComponent},
             {path:'serials/:name', component: SerialComponent},
             {path:'episodes/:serial_id/:season/:episode', component: EpisodeComponent},
+            {path:'register', component:RegisterComponent, pathMatch:'full'},
             {path:'', component: MainComponent, pathMatch: 'full'},
             {path:'**', redirectTo:'', pathMatch: 'full'}
         ])
@@ -38,10 +42,12 @@ import {SubscriptionService} from "./subscription/subscription.service";
         LoginDialogComponent,
         SerialComponent,
         SerialsListComponent,
-        EpisodeComponent
+        EpisodeComponent,
+        RegisterComponent
     ],
     entryComponents: [LoginDialogComponent],
     providers: [
+        { provide: LOCALE_ID, useValue: "ru-RU" },
         UserService,
         SerialService,
         EpisodeService,

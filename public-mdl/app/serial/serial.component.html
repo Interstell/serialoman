@@ -11,18 +11,10 @@
                 <mdl-card-supporting-text *ngIf="serial.description">
                     {{descriptionBrief}}<p *ngIf="descriptionBrief.length < serial.description.length" (click)="showFullDescription()"><span>Показать полностью...</span></p>
                 </mdl-card-supporting-text>
-                <mdl-card-actions mdl-card-border>
-                    <button mdl-button mdl-colored mdl-ripple>Get Started</button>
-                </mdl-card-actions>
-                <mdl-card-menu>
-                    <button mdl-button mdl-button-type="icon" mdl-ripple>
-                        <mdl-icon>share</mdl-icon>
-                    </button>
-                </mdl-card-menu>
             </mdl-card>
         </div>
         <div *ngIf="seasons" class="wm-seasons-panel mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-shadow--4dp">
-            <mdl-tabs mdl-ripple>
+            <mdl-tabs mdl-ripple mdl-tab-active-index="1000">
                 <mdl-tab-panel *ngFor="let season of seasons; let i = index" mdl-tab-panel-title="S{{i + 1}}" [disabled]="!season.length">
                     <ul>
                         <li (click)="goToEpisode(episode)" class="wm-episode-link" *ngFor="let episode of season">{{(episode.episode_number == 0)?'Сезон полностью':'Серия '+episode.episode_number}}</li>

@@ -25,7 +25,8 @@
 
             // other libraries
             'rxjs': 'npm:rxjs',
-            'angular2-mdl': 'npm:angular2-mdl'
+            'angular2-mdl': 'npm:angular2-mdl',
+            'ng2-imageupload': 'npm:ng2-imageupload'
 
         },
         // packages tells the System loader how to load when no filename and/or no extension
@@ -39,6 +40,10 @@
             },
             'angular2-mdl': {
               main: '/bundle/angular2-mdl.js'
+            },
+            'ng2-imageupload': {
+                main: 'index.js',
+                defaultExtension: 'js'
             }
         }
     });

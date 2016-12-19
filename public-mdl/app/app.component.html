@@ -24,8 +24,8 @@
                 </button>
             </div>
             <nav class="mdl-navigation">
+                <a *ngIf="!user" routerLink="/register" routerLinkActive="active" class="mdl-navigation__link">Регистрация</a>
                 <a class="mdl-navigation__link" routerLink="/serials" routerLinkActive="active">Все сериалы</a>
-                <a class="mdl-navigation__link">Link</a>
                 <a *ngIf="user" class="mdl-navigation__link" (click)="logout()" ><b>Выйти</b></a>
             </nav>
         </mdl-layout-drawer>

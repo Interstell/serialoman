@@ -76,7 +76,7 @@ var SerialComponent = (function () {
             .then(function (subscriptions) {
             _this.subscription = subscriptions.find(function (sub) { return sub.serial_orig_name == _this.serial.orig_name; });
             if (!_this.subscription)
-                _this.subscription = null;
+                return _this.subscription = null;
             var ns = _this.subscription.episode_sources.find(function (sc) { return sc == 'newstudio'; });
             if (ns)
                 _this.newstudioSubscribed = true;

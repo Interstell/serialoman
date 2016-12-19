@@ -1,0 +1,42 @@
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
+    <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet">
+        <div class="wm-register-panel mdl-shadow--4dp">
+            <h3>Регистрация</h3>
+            <form [formGroup]="form">
+                <mdl-textfield
+                        label="Email"
+                        name="email"
+                        type="text"
+                        formControlName="email"
+                        floating-label
+                        pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$"></mdl-textfield>
+                <mdl-textfield
+                        label="Имя пользователя (ник)"
+                        name="username"
+                        type="text"
+                        formControlName="username"
+                        floating-label></mdl-textfield>
+                <mdl-textfield
+                        label="Пароль"
+                        name="password1"
+                        type="password"
+                        formControlName="password1"
+                        floating-label></mdl-textfield>
+                <mdl-textfield
+                        label="Подвердите пароль"
+                        name="password2"
+                        type="password"
+                        formControlName="password2"
+                        floating-label></mdl-textfield>
+                <p class="wm-error-color" *ngIf="password1.value.length && password2.value.length && password1.value != password2.value">Пароли не совпадают.</p>
+                <div class="wm-register-button-container">
+                    <button (click)="register()" [disabled]="!(form.valid && password1.value == password2.value)" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
+</div>

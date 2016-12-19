@@ -88,7 +88,7 @@ export class SerialComponent implements OnInit, OnDestroy{
             .then(subscriptions => {
                 this.subscription = subscriptions.find(sub => sub.serial_orig_name == this.serial.orig_name);
                 if (!this.subscription)
-                    this.subscription = null;
+                    return this.subscription = null;
                 let ns = this.subscription.episode_sources.find(sc => sc == 'newstudio');
                 if (ns)
                     this.newstudioSubscribed = true;

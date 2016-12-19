@@ -1,0 +1,12 @@
+.wm-register-panel {
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 20px 15px; }
+  .wm-register-panel mdl-textfield {
+    width: 100%; }
+  .wm-register-panel .wm-register-button-container {
+    text-align: center; }
+  .wm-register-panel .wm-error-color {
+    color: #d50000; }
+
+/*# sourceMappingURL=register.component.css.map */

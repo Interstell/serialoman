@@ -28,8 +28,9 @@
                                 Скачать
                             </button>
                         </a>
-                        <hr *ngIf="i != rel_episode.download_urls.length - 1">
+                        <hr>
                     </div>
+                    <p><b>Дата выхода</b>: {{rel_episode.release_date | date:'yMdjm'}}</p>
                 </div>
             </div>
         </div>

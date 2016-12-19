@@ -24,6 +24,8 @@ var serials_list_component_1 = require("./serials-list/serials-list.component");
 var episode_component_1 = require("./episode/episode.component");
 var episode_service_1 = require("./episode/episode.service");
 var subscription_service_1 = require("./subscription/subscription.service");
+var register_component_1 = require("./register/register.component");
+var ng2_imageupload_1 = require("ng2-imageupload");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,11 +39,13 @@ AppModule = __decorate([
             forms_1.FormsModule,
             forms_1.ReactiveFormsModule,
             angular2_mdl_1.MdlModule,
+            ng2_imageupload_1.ImageUploadModule,
             router_1.RouterModule.forRoot([
-                { path: 'serials', component: serials_list_component_1.SerialsListComponent },
+                { path: 'serials', component: serials_list_component_1.SerialsListComponent, pathMatch: 'full' },
                 { path: 'serials/page/:page', component: serials_list_component_1.SerialsListComponent },
                 { path: 'serials/:name', component: serial_component_1.SerialComponent },
                 { path: 'episodes/:serial_id/:season/:episode', component: episode_component_1.EpisodeComponent },
+                { path: 'register', component: register_component_1.RegisterComponent, pathMatch: 'full' },
                 { path: '', component: main_component_1.MainComponent, pathMatch: 'full' },
                 { path: '**', redirectTo: '', pathMatch: 'full' }
             ])
@@ -52,10 +56,12 @@ AppModule = __decorate([
             login_dialog_component_1.LoginDialogComponent,
             serial_component_1.SerialComponent,
             serials_list_component_1.SerialsListComponent,
-            episode_component_1.EpisodeComponent
+            episode_component_1.EpisodeComponent,
+            register_component_1.RegisterComponent
         ],
         entryComponents: [login_dialog_component_1.LoginDialogComponent],
         providers: [
+            { provide: core_1.LOCALE_ID, useValue: "ru-RU" },
             user_service_1.UserService,
             serial_service_1.SerialService,
             episode_service_1.EpisodeService,

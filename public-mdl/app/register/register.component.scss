@@ -1,0 +1,14 @@
+.wm-register-panel{
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 20px 15px;
+  mdl-textfield{
+    width: 100%;
+  }
+  .wm-register-button-container{
+    text-align: center;
+  }
+  .wm-error-color{
+    color: rgb(213,0,0);
+  }
+}
