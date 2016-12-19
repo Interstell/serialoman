@@ -10,7 +10,7 @@ exports.fillEpisodeWithModelInfo = function(episode) {
             if (!err && res.statusCode == 200) {
                 let $ = cheerio.load(page, {decodeEntities: false});
                 let post_text = $($('.post_wrap').get(0)).text();
-                episode.season = parseInt(post_text.match(/Сезон: ([\d]+)/)[1]);
+                //episode.season = parseInt(post_text.match(/Сезон: ([\d]+)/)[1]);
                 let date = $('.add-on span').text();
                 let date_regex = /((Сегодня)|(Вчера)) ([\d]{2}):([\d]{2})/;
                 if (date.includes('Сегодня')){
@@ -73,7 +73,7 @@ exports.getAllEpisodesOfSerial = function (serial) {
     let all_episodes = [];
     function getPagesCount() {
         return new Promise((resolve, reject) => {
-            request({uri:serial.url, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
+            request({uri:serial.newstudio_url, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
                 method:'GET'}, (err, res, page) => {
                 if (!err && res.statusCode == 200) {
                     let $ = cheerio.load(page, {decodeEntities: false});
@@ -85,7 +85,7 @@ exports.getAllEpisodesOfSerial = function (serial) {
     }
     function parseEpisodesOnPage(page){
         return new Promise((resolve, reject) => {
-            request({uri:serial.url+'&sort=2&start='+page*50, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
+            request({uri:serial.newstudio_url+'&sort=2&start='+page*50, headers : { Cookie : process.env.NEWSTUDIO_COOKIES },
                 method:'GET'}, (err, res, page) => {
                 if (!err && res.statusCode == 200) {
                     let $ = cheerio.load(page, {decodeEntities: false});
@@ -106,13 +106,13 @@ exports.getAllEpisodesOfSerial = function (serial) {
                             })
                         }
                         else {
-                            topic_matches = topic_name.match(/([^(]+) \(([А-Яа-я]+) [^\/]+ \/ ([^(]+)\([\d]+\) ([\w]+)([ ][\d]+p)?/);
+                            topic_matches = topic_name.match(/([^(]+) \([А-Яа-я]+ ([\d]+)[^\/]+ \/ ([^(]+)\([\d]+\) ([\w]+)([ ][\d]+p)?/);
                             if (!topic_matches)
                                 return;
                             episode.serial_name = topic_matches[3].trim().replace(/&#039;/,'\'');
                             episode.serial_rus_name = topic_matches[1].trim();
                             episode.serial_orig_name = episode.serial_name;
-                            episode.season = topic_matches[2];
+                            episode.season = parseInt(topic_matches[2]);
                             episode.episode_number = 0;
                             episode.full_season = true;
                             episode.download_urls = [];
@@ -124,7 +124,7 @@ exports.getAllEpisodesOfSerial = function (serial) {
                         episode.download_urls[0].link = 'http://newstudio.tv' + $(elem).find('.span1 a').attr('href').slice(1);
                         episode.episode_url = 'http://newstudio.tv' + $(elem).find('.torTopic').attr('href').slice(1);
                         episode.download_page_url = episode.episode_url;
-                        episode.icon = `http://newstudio.tv/images/posters/${serial.url.match(/([\d]+)/)}.jpg`.replace(/,[\d]+/,'');
+                        episode.icon = `http://newstudio.tv/images/posters/${serial.newstudio_url.match(/([\d]+)/)}.jpg`.replace(/,[\d]+/,'');
                         all_episodes.push(episode);
                     });
                     resolve();

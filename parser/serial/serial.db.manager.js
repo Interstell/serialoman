@@ -80,8 +80,6 @@ exports.normalizeIndeces = function () {
         });
 };
 
-exports.normalizeIndeces();
-
 /*exports.addColors = function(new_serial){
     Serial
         .find({})

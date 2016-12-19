@@ -15,6 +15,7 @@ exports.parseSerialNamesFromIndexPage = function () {
                     serials.push({
                         rus_name: $(elem).text(),
                         url: 'http://newstudio.tv'+$(elem).attr('href'),
+                        newstudio_url: 'http://newstudio.tv'+$(elem).attr('href'),
                         source:'newstudio'
                     })
                 });

@@ -7,7 +7,7 @@ const nsEpisodeParser = require('../newstudio/newstudio.episode.parser');
 function getAllSerialsFromDb() {
     return new Promise((resolve, reject)=>{
         Serial
-            .find({source: 'newstudio'})
+            .find({$and: [{newstudio_url:new RegExp('newstudio','i')}, {is_on_air: true}]})
             .exec((err, data) => {
                 if (err)
                     reject(err);
@@ -34,6 +34,7 @@ exports.parseAllEpisodesAndAddToDb = function () {
                     }))
                     .then(episodes => episodes.filter(episode => !episode.exists))
                     .then(episodes => episodes.map(episode => episode.episode))
+                    .then(episodes => episodes.filter(episode => episode.release_date != 'Invalid Date'))
                     .then(episodes => episodes.map(episode => episodeDbManager.addNewEpisodeToDB(episode)))
                     .then(episodes => Promise.all(episodes))
             )
