@@ -1,0 +1,17 @@
+@import "../../node_modules/angular2-mdl/scss/_color-definitions";
+
+$color-primary: $palette-blue-500;
+$color-primary-dark: $palette-blue-700;
+$color-accent: $palette-amber-A200;
+$color-primary-contrast: $color-dark-contrast;
+$color-accent-contrast: $color-dark-contrast;
+
+@import '../../node_modules/angular2-mdl/scss/material-design-lite';
+
+.mdl-navigation__link{
+  cursor: pointer;
+}
+
+.mdl-layout__content{
+  background-color: #ddd;
+}
