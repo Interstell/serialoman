@@ -62,15 +62,20 @@ exports.getAllEpisodesOnPage = function (episodes, offset) {
                     download_links.each((i, elem) => {
                         if (i % 2 == 0){
                             if (episodes[startIndex+ i/2].full_season){
+                                if (!$(elem).attr('href').match(/id=[\d]+&([\w-. ]+)(?=[\d])/))
+                                    return;
                                 episodes[startIndex + i/2].serial_name = $(elem).attr('href').match(/id=[\d]+&([\w-. ]+)(?=[\d])/)[1].trim();
                                 episodes[startIndex + i/2].serial_orig_name = episodes[startIndex + i/2].serial_name;
                                 //todo check for real name for full_season_episodes
                             }
                             else {
+                                console.log($(elem).attr('href').replace(/ /g,''));
                                 let link_match = $(elem).attr('href').replace(/ /g,'')
                                     .match(/id=[\d]+&([\S]+).S[\d]+/);
                                 if (!link_match) {
                                     link_match = $(elem).attr('href').match(/id=[\d]+&([^-]+)(?= [\d])/);
+                                    if (!link_match)
+                                        return;
                                     episodes[startIndex + i/2].serial_name = link_match[1].trim();
                                 }
                                 else{

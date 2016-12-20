@@ -29,6 +29,7 @@ exports.parseAllEpisodes = function(){ //dev function for initialize parsing
         }))
         .then(episodes => episodes.filter(episode => !episode.exists)) //filter new episodes
         .then(episodes => episodes.map(episode => episode.episode))
+        .then(episodes => episodes.filter(episode => episode.serial_orig_name))
         .then(episodes => episodes.map(episode => episodeDBManager.addNewEpisodeToDB(episode)))
         .then(episodes => Promise.all(episodes))
         .then(episodes => console.log(`[LF Parser]: ${episodes.length} new episodes added`))
@@ -77,13 +78,15 @@ exports.checkForNewEpisodes = function(){ // do not run on empty collection
                 });
             return sequence = sequence.then(() => Promise.resolve(new_episodes));
         };
-        runner()
+        return runner()
             .then(episodes => {
                 console.log(`[LF Parser]: ${episodes.length} new episodes parsed and added to DB.`);
                 episodes.forEach(episode => console.log(`\t${episode.serial_name} S${episode.season}E${(episode.episode_number)?episode.episode_number:0} (${moment(episode.release_date).format('DD/MM/YYYY HH:mm:ss Z')})`));
+                return episodes;
             });
     })
 };
 
 //exports.checkForNewEpisodes();
+
 
