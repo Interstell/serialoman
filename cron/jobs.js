@@ -3,6 +3,7 @@ const LostfilmSerialChecker = require('../parser/lostfilm/lostfilm.serial.check_
 const LostfilmEpisodeChecker = require('../parser/lostfilm/lostfilm.episode.check_for_new');
 const NewstudioSerialChecker = require('../parser/newstudio/newstudio.serial.check_for_new')
 const NewstudioEpisodeChecker = require('../parser/newstudio/newstudio.episode.check_for_new');
+const Notifier = require('../notifier/notifier.service.server');
 
 /*
 * seconds: 0-59
@@ -17,7 +18,12 @@ let NSNewEpisodeJob  = new CronJob({
     cronTime: '0 */5 * * * *', //each 5 minutes e.g. 00 05 10..
     onTick: function () {
         console.log('[NS Parser] Starting to parse new episodes...');
-        NewstudioEpisodeChecker.checkForNewEpisodes();
+        NewstudioEpisodeChecker.checkForNewEpisodes()
+            .then(episodes => {
+                episodes.forEach(episode => {
+                    Notifier.notifyAboutNewEpisode(episode);
+                })
+            });
     },
     start: false,
     timeZone: 'Europe/Kiev'
@@ -28,7 +34,11 @@ let LFNewEpisodeJob = new CronJob({
     onTick: function () {
         setTimeout(() => {
             console.log('[LF Parser] Starting to parse new episodes...');
-            LostfilmEpisodeChecker.checkForNewEpisodes();
+            LostfilmEpisodeChecker.checkForNewEpisodes().then(episodes => {
+                episodes.forEach(episode => {
+                    Notifier.notifyAboutNewEpisode(episode);
+                })
+            });
         }, 2*60*1000);
 
     },

@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+	"postinstall": "cd ./public-mdl && npm install"
   },
+  "engines" : { "node" : "6.6.0" },
   "dependencies": {
     "body-parser": "~1.15.1",
     "cheerio": "^0.22.0",
