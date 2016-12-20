@@ -4,10 +4,7 @@
   "author": "Dmitry Urukov",
   "description": "WatchMan App",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "lite": "lite-server",
-    "typings": "typings",
-    "postinstall": "typings install"
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\""
   },
   "license": "ISC",
   "dependencies": {
