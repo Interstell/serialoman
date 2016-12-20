@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 if (!mongoose.connection.readyState){
-    mongoose.connect('mongodb://localhost:27017/cw-serialoman');
+    mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cw-serialoman');
 }
 let Schema = mongoose.Schema;
 mongoose.Promise = Promise;
