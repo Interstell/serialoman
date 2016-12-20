@@ -1,6 +1,8 @@
 <h2>Дорогой <%= user.username %>!</h2>
-<h4>Вышла новая серия твоего любимого сериала:</h4>
+<h4>Вышла новая серия твоего любимого сериала в озвучке <%= episode.source%>!</h4>
 
 <h3><%= episode.serial_name %></h3>
 <p>Сезон <%= episode.season %></p>
 <p>Серия: <%= episode.episode_number %></p>
+
+<a href="https://watchman-kpi.herokuapp.com/serials/page/1?search=<%= episode.serial_orig_name%>">Перейти на сайт</a>

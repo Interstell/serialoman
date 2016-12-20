@@ -69,7 +69,6 @@ exports.getAllEpisodesOnPage = function (episodes, offset) {
                                 //todo check for real name for full_season_episodes
                             }
                             else {
-                                console.log($(elem).attr('href').replace(/ /g,''));
                                 let link_match = $(elem).attr('href').replace(/ /g,'')
                                     .match(/id=[\d]+&([\S]+).S[\d]+/);
                                 if (!link_match) {

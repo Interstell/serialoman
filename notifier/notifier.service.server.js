@@ -21,7 +21,7 @@ exports.notifyAboutNewEpisode = function (episode) {
         .find({serial_orig_name: episode.serial_name})
         .exec((err, subs) => {
             if (subs && subs.length > 0){
-                readTemplate('./templates/episode.ejs')
+                readTemplate('./notifier/templates/episode.ejs')
                     .then(template => {
                         subs.forEach(sub => {
                             User

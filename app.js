@@ -10,8 +10,12 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const crypto = require('crypto');
-const User = require('./models/user.model');
-const userCtrl = require('./controllers/user.controller.server');
+
+const app = express();
+
+if (app.get('env') === 'development') {
+    require('dotenv').config({silent:true});
+}
 
 const mongoose = require('mongoose');
 if (!mongoose.connection.readyState){
@@ -19,12 +23,8 @@ if (!mongoose.connection.readyState){
 }
 
 const api = require('./routes/api');
-
-const app = express();
-
-if (app.get('env') === 'development') {
-    require('dotenv').config({silent:true});
-}
+const User = require('./models/user.model');
+const userCtrl = require('./controllers/user.controller.server');
 
 const AppCron = require('./cron/jobs');
 //AppCron.startJobs();
